@@ -3,7 +3,7 @@ const connectionString = process.env.DATABASE_URL;
 const pool = new Pool({connectionString: connectionString});
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 5432; 
+const port = process.env.PORT || 8080; 
 
 // tell it to use the public directory as one where static files live
 app.use(express.static(__dirname + '/public'));
