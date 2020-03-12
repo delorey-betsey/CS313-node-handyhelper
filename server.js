@@ -11,9 +11,12 @@ app.set('view engine', 'ejs');
 
 app.get("/",function(req,res) {
 	console.log("started the landing page");
+	res.render("form");
 });
 		
-
+// set up a rule that says requests to "/math" should be handled by the
+// handleMath function below
+app.get('/math', handleMath);
 
 // start the server listening
 app.listen(port, function() {
@@ -58,25 +61,4 @@ function computeOperation(response, op, left, right) {
 	response.render('result', params);
 
 }
-
-// function sayHello(req,res) {
-// 	console.log("Received a request for: " + req.url);
-//     var request = req.url;
-// 	if (request == '/home') 
-// 		{
-// 		  res.write("Welcome to the Home Page");
-// 		  res.end();
-// 		} else
-// 	if (request == '/getData') 
-// 		{
-// 		  res.write("Name:  Sister Delorey" + "\n");
-// 		  res.write("Class: CS313-03");
-// 		  res.end();
-// 		}  
-// 		else
-// 		{
-// 		  res.write("404:Page Not Found");
-// 		  res.end();
-// 		}  		
-// }
 
