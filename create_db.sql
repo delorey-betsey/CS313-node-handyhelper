@@ -10,9 +10,9 @@ CREATE TABLE person
 );
 
 INSERT INTO person(first, last, birthdate) VALUES
-  ('Thomas', 'Burton', '1878-08-28'),
-  ('Herbert', 'Burton', '1847-10-01'),
-  ('Mary', 'Pass', '1849-08-06');
+  ('Betsey', 'Delorey', '1878-08-28'),
+  ('Orion', 'Christensen', '1847-10-01'),
+  ('Marvin', 'Enamorado', '1849-08-06');
 
 CREATE USER ta_user WITH PASSWORD 'ta_pass';
 GRANT SELECT, INSERT, UPDATE ON person TO ta_user;
