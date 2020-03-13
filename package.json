@@ -1,7 +1,7 @@
 {
-  "name": "10team",
+  "name": "handyhelper",
   "version": "0.2.5",
-  "description": "A sample Node.js app using Express 4",
+  "description": "Project 2 Handy Helper",
   "engines": {
     "node": "5.9.1"
   },
@@ -24,8 +24,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/heroku/node-js-getting-started/issues"
+     
   },
-  "homepage": "https://github.com/heroku/node-js-getting-started#readme",
-  "author": ""
+  "homepage": " ",
+  "author": "betsey delorey",
+  "devDependencies": {}
 }

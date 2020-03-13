@@ -32,7 +32,7 @@ function getPersonFromDB(id, callback) {
      console.log("Back from the getPersonFromDB function with the results: " + id);
 
 	 //var result = {id: 444, first: "Betsey", last: "Delorey", birthdate: "1954-12-16"};
-	 var sql = "SELECT id, first, last, birthdate FROM person WHERE id = $1::int";
+	 var sql = "SELECT userID, firstName, lastName FROM cooks WHERE id = $1::int";
 
      var params = [id];
 
