@@ -4,16 +4,16 @@
   "description": "Project 2 Handy Helper",
   "engines": {
     "npm": "6.4.1",
-    "node": "5.9.1"
+    "node": "12.x"
   },
   "main": "server.js",
   "scripts": {
-    "heroku-postbuild": "npm run build",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "express": "^4.13.3",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
     "pg": "^6.4.2"
   },
   "repository": {
