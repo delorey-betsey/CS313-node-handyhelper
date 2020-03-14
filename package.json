@@ -24,9 +24,7 @@
     "express"
   ],
   "license": "MIT",
-  "bugs": {
-     
-  },
+  "bugs": {},
   "homepage": " ",
   "author": "betsey delorey",
   "devDependencies": {}
