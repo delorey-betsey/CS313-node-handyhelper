@@ -1,4 +1,14 @@
-<!DOCTYPE html>
+<script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="/ajax.js"></script>
+<h1><%=var1%> <%=sign%> <%=var2%> = <%=result%> </h1>
+<form method="post" id="calcValues">
+    <input type="text" placeholder="Variable 1" name="var1"/>
+    <input type="text" placeholder="Sign" name="sign"/>
+    <input type="text" placeholder="Variable 2" name="var2"/>
+    <input type="submit" value="Calculate">
+</form>
+
+<!-- <!DOCTYPE html>
 <html>
 <head>
 	<title>Computed Result</title>
@@ -8,4 +18,4 @@
 	<p><%= message %></p>
 	<p>The required postage is: $<%= result %> on "<%= type %>" mail weighing <%= weight %> lbs.</p>
 </body>
-</html>
+</html> -->

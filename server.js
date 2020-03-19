@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-
+const cool = require('cool-ascii-faces');
 const { Pool } = require("pg");  
 
 const connectionString = process.env.DATABASE_URL || "postgres://kyqsvxntadtknr:3e889cae426990eff6d8cdd7fdf8924ee8821e88fd9baa08e007d5d59eb65fe5@ec2-18-209-187-54.compute-1.amazonaws.com:5432/d6bagnvea9jcap?ssl=true";
@@ -10,13 +10,35 @@ const pool = new Pool({connectionString: connectionString});
 app.set('port', (process.env.PORT || 5000));
 // app.use(express.static(__dirname + '/public'));
 
+app.get("/", getData);
+
+app.post("/", postData);
+
+app.get("/cool", (req, res) => res.send(cool()));
+
 app.get('/getPerson', getPerson);
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
 
-
+//_______________________________________________________
+function getData(req, res) {
+	console.log("Getting data");  
+	res.render('result', { var1: '', sign: '', var2: '', result: '' });
+  }
+  
+  function postData(req, res) {
+	console.log("Posting data");
+	console.log(req.body.var1);
+	console.log(req.body.sign);
+	console.log(req.body.var2);
+	
+	var result = ms.computeOperation(req.body.sign, req.body.var1, req.body.var2);
+	console.log(result);
+	res.render('result', { var1: req.body.var1, sign: req.body.sign, var2: req.body.var2, result: result });
+  }
+  
 function getPerson(request, response) {
 	console.log("Got it: ");
 	var id = request.query.id;
