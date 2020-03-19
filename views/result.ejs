@@ -1,9 +1,58 @@
 <script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
 <script src="/ajax.js"></script>
-<h1><%=var1%> <%=sign%> <%=var2%> = <%=result%> </h1>
-<form method="post" id="calcValues">
-    <input type="text" placeholder="Variable 1" name="var1"/>
-    <input type="text" placeholder="Sign" name="sign"/>
-    <input type="text" placeholder="Variable 2" name="var2"/>
-    <input type="submit" value="Calculate">
+
+<h1>* * HANDY HELPER * *</h1>
+<p>Divide or Double your recipe in a snap!</p>
+<br><br>
+<p>1. First step:  Input recipe details and ingredients below. Click SUBMIT.</p>
+<p>2. Next:        Choose operation--times 2 or divided by 2.</p>
+<br><br>
+<h1>* * ADD RECIPE DETAILS * *</h1>
+<form method="post" id="processInput">
+    <input type="text" placeholder="Title"        name="title"/>
+    <input type="text" placeholder="Instructions" name="instructions"/>
+    <input type="text" placeholder="Servings"     name="servings"/>
+    <input type="text" placeholder="Recipe Notes" name="rnotes"/>
+    <input type="submit" value="SUBMIT">
 </form>
+
+<br><br>
+<p>Title        = <%=title%> </p>
+<br>
+<p>Instructions = <%=instructions%> </p>
+<br>
+<p>Servings     = <%=servings%> </p>
+<br>
+<p>Recipe Notes = <%=rnotes%> </p>
+
+<br><br>
+<h1>* * ADD INGREDIENTS * *</h1>
+<!-- COMMENT:  ARTWORK     -->
+<form method="post" action="">
+    <!-- <div class="tanbackground">
+            <button type="submit" name="addbutton" value="addbutton"><img class="button" src="images/addbutton.jpg" alt="addbutton"></button>      
+   </div>    
+    <div class="grouping" >  
+        <?php
+ -->
+            <!-- foreach ($ingredients as $ingredient)
+            {
+                    $item    = $ingredient['item'];
+                    $amount  = $ingredient['amount'];
+                    $measure = $ingredient['measure'];
+                    $inotes  = $ingredient['itemnotes'];
+
+                    echo "<div>Ingredient:  $item </div>";
+                    echo "<div>Amount: $amount  </div>";
+
+                    echo "<input class='largerCheckbox' type='checkbox' id='item1' name='items[]' value='item $artid'>";                 
+                    echo "<label for=artid>#$artid - $price</label>"; 
+
+                    echo "<div>Notes:       $itemnotes  </div>";                        
+                echo "</div>";
+            }  
+        <!-- $_SESSION["items"] = $items;        
+        ?> -->
+        <!-- <br><br><br>                  
+    </div>
+    </form>       -->

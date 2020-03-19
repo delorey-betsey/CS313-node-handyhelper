@@ -8,9 +8,6 @@ const connectionString = process.env.DATABASE_URL || "postgres://kyqsvxntadtknr:
 
 const pool = new Pool({connectionString: connectionString});
 
-app.get('/getPerson', getPerson);
-var ms = require('./mathService');
-
 app.set('view engine', 'ejs');
 app.set("port", (process.env.PORT || 5000));
 
@@ -21,29 +18,36 @@ app.get("/", getData);
 
 app.post("/", postData);
 
+app.get('/getPerson', getPerson);
+//var ms = require('./mathService');
+
 app.get("/cool", (req, res) => res.send(cool()));
 
 app.listen(app.get("port"), function() {
   console.log("Now listening on port: ", app.get("port"));
 });
-
+//__________________________________________________
 function getData(req, res) {
   console.log("Getting data");
 
-  res.render('result', { var1: '', sign: '', var2: '', result: '' });
+  res.render('result', { title: '', instructions: '', servings: '', rnotes: ''});
 }
 
 function postData(req, res) {
   console.log("Posting data");
-  console.log(req.body.var1);
-  console.log(req.body.sign);
-  console.log(req.body.var2);
+  console.log(req.body.title);
+  console.log(req.body.instructions);
+  console.log(req.body.servings);
+  console.log(req.body.rnotes);
   
-  var result = ms.computeOperation(req.body.sign, req.body.var1, req.body.var2);
-  console.log(result);
-  res.render('result', { var1: req.body.var1, sign: req.body.sign, var2: req.body.var2, result: result });
+  //var result = ms.computeOperation(req.body.sign, req.body.var1, req.body.var2);
+  //console.log(result);
+  res.render('result', { title:req.body.title, 
+						 instructions:req.body.instructions, 
+						 servings:req.body.servings, 
+						 rnotes:req.body.rnotes});
 }
-
+//________________________________________________
 function getPerson(request, response) {
 	console.log("Got it: ");
 	var id = request.query.id;

@@ -1,16 +1,18 @@
 $(document).ready(function(){
-    $("form#calcValues").on('submit', function(e){
+    $("form#processInput").on('submit', function(e){
         e.preventDefault();
-        var var1 = $('input[name=var1]').val();
-        var sign = $('input[name=sign]').val();   
-        var var2 = $('input[name=var2]').val();
+        var title        = $('input[name=title]').val();
+        var instructions = $('input[name=instructions]').val();   
+        var servings     = $('input[name=servings]').val();          
+        var rnotes       = $('input[name=rnotes]').val();
         $.ajax({
             type: 'post',
             url: '/ajax',
             data: data{
-  		var1: var1,
-		sign: sign,
-		var2: var2
+  		title:        title,
+		instructions: instructions,
+		servings:     servings,
+		rnotes:       rnotes
 	    },
             dataType: 'text'
         })
