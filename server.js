@@ -18,10 +18,10 @@ app.get("/", getData);
 
 app.post("/", postData);
 
+app.get("/cool", (req, res) => res.send(cool()));
+
 app.get('/getPerson', getPerson);
 //var ms = require('./mathService');
-
-app.get("/cool", (req, res) => res.send(cool()));
 
 app.listen(app.get("port"), function() {
   console.log("Now listening on port: ", app.get("port"));
