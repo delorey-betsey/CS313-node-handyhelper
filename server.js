@@ -16,7 +16,11 @@ app.set('view engine', 'ejs');
 //app.use(express.json()); // support json encoded bodies
 //app.use(express.urlencoded({extended: true})); // support url encoded bodies
 
-app.get('/getPerson', getPerson);
+//app.get('/getPerson', getPerson);
+app.get("/",function(req,res) {
+	console.log("started the landing page");
+	res.render("form");
+});
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
