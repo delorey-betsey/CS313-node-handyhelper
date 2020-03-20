@@ -23,12 +23,16 @@ app.post("/", postDetails);
 //app.get("/cool", (req, res) => res.send(cool()));
 
 app.get('/getPerson', getPerson);
+app.get('/getRecipe', getRecipe);
 //var ms = require('./mathService');
 
 app.listen(app.get("port"), function() {
   console.log("Now listening on port: ", app.get("port"));
 });
-//__________________________________________________
+
+
+//_________getDetails functions_________________________________________
+
 function getDetails(req, res) {
   console.log("Getting details");
   res.render('result', { title: '', instructions: '', servings: '', rnotes: '',
@@ -75,7 +79,44 @@ function postDetails(req, res) {
 // 						   measure:req.body.measure, 
 // 						   inotes: req.body.inotes});
 //   }
-//________________________________________________
+
+
+//__________getRecipe functions______________________________________
+
+function getRecipe(request, response) {
+	console.log("Got recipe: ");
+	var id = request.query.id;
+	console.log("Retrieving recipe with id: ", id); 
+
+	getRecipeFromDB(id, function(error, result) {
+		console.log("Back from the database with recipe:", result);
+		response.json(result);
+	});
+}
+
+function getRecipeFromDB(id, callback) {
+     console.log("Back from the getRecipeFromDB function with the recipe: " + id);
+
+	 //var result = {id: 444, first: "Betsey", last: "Delorey", birthdate: "1954-12-16"};
+	 var sql = "SELECT recipeID, userID, title, instructions, servings, recipeNotes FROM recipes WHERE recipeID = $1::int";
+
+     var params = [id];
+
+	pool.query(sql, params, function(err, result) {
+	
+		if (err) {
+			console.log("Error with database occurred. ")
+			console.log(err);
+			callback(err, null);
+		}
+
+     	console.log("Found db recipe: " + JSON.stringify(result.rows));
+
+		callback(null, result.rows);
+	});
+} 
+//_______getPerson functions__________________________________________________
+
 function getPerson(request, response) {
 	console.log("Got it: ");
 	var id = request.query.id;
