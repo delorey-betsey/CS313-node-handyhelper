@@ -7,6 +7,8 @@ INSERT INTO cooks(firstName, lastName)
 VALUES  ('Betsey', 'Delorey'),
         ('Orion', 'Christensen'),
         ('Marvin', 'Enamorado');
+		
+ALTER TABLE cooks RENAME TO chefs;
 
 
 CREATE TABLE recipes(

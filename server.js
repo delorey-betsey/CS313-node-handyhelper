@@ -132,7 +132,7 @@ function getChefFromDB(id, callback) {
      console.log("Back from the getPersonFromDB function with the results: " + id);
 
 	 //var result = {id: 444, first: "Betsey", last: "Delorey", birthdate: "1954-12-16"};
-	 var sql = "SELECT userID, firstName, lastName FROM cooks WHERE userID = $1::int";
+	 var sql = "SELECT userID, firstName, lastName FROM chefs WHERE userID = $1::int";
 
      var params = [id];
 
