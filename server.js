@@ -14,9 +14,11 @@ app.set("port", (process.env.PORT || 5000));
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", getData);
+app.get("/", getDetails);
+app.get("/", getIngredient);
 
-app.post("/", postData);
+app.post("/", postDetails);
+app.post("/", postIngredient);
 
 app.get("/cool", (req, res) => res.send(cool()));
 
@@ -27,11 +29,14 @@ app.listen(app.get("port"), function() {
   console.log("Now listening on port: ", app.get("port"));
 });
 //__________________________________________________
-function getData(req, res) {
-  console.log("Getting data");
-
+function getDetails(req, res) {
+  console.log("Getting details");
   res.render('result', { title: '', instructions: '', servings: '', rnotes: ''});
 }
+function getIngredient(req, res) {
+	console.log("Getting ingredient");  
+	res.render('result', { item: '', amount: '', measure: '', inotes: ''});
+  }
 
 function postDetails(req, res) {
   console.log("Posting details");
@@ -42,10 +47,10 @@ function postDetails(req, res) {
   
   //var result = ms.computeOperation(req.body.sign, req.body.var1, req.body.var2);
   //console.log(result);
-  res.render('result', { title:req.body.title, 
+  res.render('result', { title:       req.body.title, 
 						 instructions:req.body.instructions, 
-						 servings:req.body.servings, 
-						 rnotes:req.body.rnotes});
+						 servings:    req.body.servings, 
+						 rnotes:      req.body.rnotes});
 }
 function postIngredient(req, res) {
 	console.log("Posting ingredient");
@@ -56,10 +61,10 @@ function postIngredient(req, res) {
 	
 	//var result = ms.computeOperation(req.body.sign, req.body.var1, req.body.var2);
 	//console.log(result);
-	res.render('result', { item:req.body.item, 
-						   amount:req.body.amount, 
+	res.render('result', { item:   req.body.item, 
+						   amount: req.body.amount, 
 						   measure:req.body.measure, 
-						   inotes:req.body.inotes});
+						   inotes: req.body.inotes});
   }
 //________________________________________________
 function getPerson(request, response) {
