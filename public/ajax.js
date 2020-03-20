@@ -4,7 +4,11 @@ $(document).ready(function(){
         var title        = $('input[name=title]').val();
         var instructions = $('input[name=instructions]').val();   
         var servings     = $('input[name=servings]').val();          
-        var rnotes       = $('input[name=rnotes]').val();
+        var rnotes       = $('input[name=rnotes]').val();        
+        var amount       = $('input[name=amount]').val();   
+        var measure      = $('input[name=measure]').val(); 
+        var item         = $('input[name=item]').val();         
+        var inotes       = $('input[name=inotes]').val();
         $.ajax({
             type: 'post',
             url: '/ajax',
@@ -12,7 +16,11 @@ $(document).ready(function(){
                 title:        title,
                 instructions: instructions,
                 servings:     servings,
-                rnotes:       rnotes
+                rnotes:       rnotes,                
+                amount:       amount,
+                measure:      measure,
+                item:         item,
+                inotes:       inotes
             },
             dataType: 'text'
         })
@@ -22,26 +30,26 @@ $(document).ready(function(){
     });
 });
 
-$(document).ready(function(){
-    $("form#processIngredient").on('submit', function(e){
-        e.preventDefault();
-        var item     = $('input[name=item]').val();
-        var amount   = $('input[name=amount]').val();   
-        var measure  = $('input[name=measure]').val();          
-        var inotes   = $('input[name=inotes]').val();
-        $.ajax({
-            type: 'post',
-            url: '/ajax',
-            data: data{
-                item:   item,
-                amount: amount,
-                measure:measure,
-                inotes: inotes
-	        },
-            dataType: 'text'
-        })
-        .done(function(data){
-            $('h1').html(data.quote);
-        });
-    });
-});
+// $(document).ready(function(){
+//     $("form#processIngredient").on('submit', function(e){
+//         e.preventDefault();
+//         var item     = $('input[name=item]').val();
+//         var amount   = $('input[name=amount]').val();   
+//         var measure  = $('input[name=measure]').val();          
+//         var inotes   = $('input[name=inotes]').val();
+//         $.ajax({
+//             type: 'post',
+//             url: '/ajax',
+//             data: data{
+//                 item:   item,
+//                 amount: amount,
+//                 measure:measure,
+//                 inotes: inotes
+// 	        },
+//             dataType: 'text'
+//         })
+//         .done(function(data){
+//             $('h1').html(data.quote);
+//         });
+//     });
+// });

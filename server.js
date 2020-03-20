@@ -15,10 +15,10 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", getDetails);
-app.get("/", getIngredient);
+// app.get("/", getIngredient);
 
 app.post("/", postDetails);
-app.post("/", postIngredient);
+// app.post("/", postIngredient);
 
 app.get("/cool", (req, res) => res.send(cool()));
 
@@ -31,12 +31,13 @@ app.listen(app.get("port"), function() {
 //__________________________________________________
 function getDetails(req, res) {
   console.log("Getting details");
-  res.render('result', { title: '', instructions: '', servings: '', rnotes: ''});
+  res.render('result', { title: '', instructions: '', servings: '', rnotes: '',
+                         amount: '', measure: '', item: '', inotes: ''});
 }
-function getIngredient(req, res) {
-	console.log("Getting ingredient");  
-	res.render('result', { item: '', amount: '', measure: '', inotes: ''});
-  }
+// function getIngredient(req, res) {
+// 	console.log("Getting ingredient");  
+// 	res.render('result', { item: '', amount: '', measure: '', inotes: ''});
+//   }
 
 function postDetails(req, res) {
   console.log("Posting details");
@@ -44,28 +45,36 @@ function postDetails(req, res) {
   console.log(req.body.instructions);
   console.log(req.body.servings);
   console.log(req.body.rnotes);
+  console.log(req.body.amount);
+  console.log(req.body.measure);
+  console.log(req.body.item);
+  console.log(req.body.inotes);
   
   //var result = ms.computeOperation(req.body.sign, req.body.var1, req.body.var2);
   //console.log(result);
   res.render('result', { title:       req.body.title, 
 						 instructions:req.body.instructions, 
 						 servings:    req.body.servings, 
-						 rnotes:      req.body.rnotes});
+						 rnotes:      req.body.rnotes,						  
+						 amount:      req.body.amount, 
+						 measure:     req.body.measure,
+						 item:        req.body.item, 
+						 inotes:      req.body.inotes});
 }
-function postIngredient(req, res) {
-	console.log("Posting ingredient");
-	console.log(req.body.item);
-	console.log(req.body.amount);
-	console.log(req.body.measure);
-	console.log(req.body.inotes);
+// function postIngredient(req, res) {
+// 	console.log("Posting ingredient");
+// 	console.log(req.body.item);
+// 	console.log(req.body.amount);
+// 	console.log(req.body.measure);
+// 	console.log(req.body.inotes);
 	
-	//var result = ms.computeOperation(req.body.sign, req.body.var1, req.body.var2);
-	//console.log(result);
-	res.render('result', { item:   req.body.item, 
-						   amount: req.body.amount, 
-						   measure:req.body.measure, 
-						   inotes: req.body.inotes});
-  }
+// 	//var result = ms.computeOperation(req.body.sign, req.body.var1, req.body.var2);
+// 	//console.log(result);
+// 	res.render('result', { item:   req.body.item, 
+// 						   amount: req.body.amount, 
+// 						   measure:req.body.measure, 
+// 						   inotes: req.body.inotes});
+//   }
 //________________________________________________
 function getPerson(request, response) {
 	console.log("Got it: ");

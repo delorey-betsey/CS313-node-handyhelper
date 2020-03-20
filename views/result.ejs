@@ -2,40 +2,29 @@
 <script src="/ajax.js"></script>
 
 <h1>* * HANDY HELPER * *</h1>
-<p>Divide or Double your recipe in a snap!</p>
-<br><br>
+<p>Divide or Double your recipe in a Snap!</p>
 <p>1. First step:  Input recipe details and ingredients below. Click SUBMIT.</p>
-<p>2. Next:        Choose operation--times 2 or divided by 2.</p>
-<br><br>
-<h1>* * ADD RECIPE DETAILS * *</h1>
+
+<h3>* * ADD RECIPE DETAILS * *</h3>
 <form method="post" id="processDetails">
+    <input type="submit" value="SUBMIT">
+    <br><br>
     <input type="text" placeholder="Title"        name="title"/>
     <input type="text" placeholder="Instructions" name="instructions"/>
     <input type="text" placeholder="Servings"     name="servings"/>
     <input type="text" placeholder="Recipe Notes" name="rnotes"/>
-    <input type="submit" value="SUBMIT DETAILS">
-</form>
 
-<br><br>
-<p>Title        = <%=title%> </p>
-<br>
-<p>Instructions = <%=instructions%> </p>
-<br>
-<p>Servings     = <%=servings%> </p>
-<br>
-<p>Recipe Notes = <%=rnotes%> </p>
-
-<br><br>
-<h1>* * ADD INGREDIENTS * *</h1>
-<form method="post" id="processIngredient">
-    <input type="text" placeholder="Item"             name="item"/>
+<h3>* * ADD INGREDIENTS * *</h3>    
     <input type="text" placeholder="Amount"           name="amount"/>
     <input type="text" placeholder="Measure"          name="measure"/>
+    <input type="text" placeholder="Item"             name="item"/>
     <input type="text" placeholder="Ingredient Notes" name="inotes"/>
-    <input type="submit" value="SUBMIT INGREDIENT">
 </form>
-<br><br>
-<p>Ingredient = <%=item%> <%=amount%> <%=measure%> <%=inotes%></p>
+<p>Title        = <%=title%> </p>
+<p>Instructions = <%=instructions%> </p>
+<p>Servings     = <%=servings%> </p>
+<p>Recipe Notes = <%=rnotes%> </p>
+<p>Ingredient   = <%=amount%> <%=measure%> <%=item%> <%=inotes%></p>
 
 <!-- <br>
 <p>Instructions = <%=amount%> </p>
