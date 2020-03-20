@@ -24,6 +24,7 @@ app.post("/", postDetails);
 
 app.get('/getChef', getChef);
 app.get('/getRecipe', getRecipe);
+app.get('/getIngredients', getIngredients);
 //var ms = require('./mathService');
 
 app.listen(app.get("port"), function() {
@@ -115,7 +116,41 @@ function getRecipeFromDB(id, callback) {
 		callback(null, result.rows);
 	});
 } 
-//_______getPerson functions__________________________________________________
+//__________getIngredients functions______________________________________
+
+function getIngredients(request, response) {
+	console.log("Got ingredients: ");
+	var id = request.query.id;
+	console.log("Retrieving ingredients with id: ", id); 
+
+	getIngredientsFromDB(id, function(error, result) {
+		console.log("Back from the database with ingredients:", result);
+		response.json(result);
+	});
+}
+
+function getIngredientsFromDB(id, callback) {
+     console.log("Back from the getIngredientsFromDB function with the ingredients: " + id);
+
+	 //var result = {id: 444, first: "Betsey", last: "Delorey", birthdate: "1954-12-16"};
+	 var sql = "SELECT * FROM ingredients WHERE recipeID = $1::int";
+
+     var params = [id];
+
+	pool.query(sql, params, function(err, result) {
+	
+		if (err) {
+			console.log("Error with database occurred. ")
+			console.log(err);
+			callback(err, null);
+		}
+
+     	console.log("Found db ingredients: " + JSON.stringify(result.rows));
+
+		callback(null, result.rows);
+	});
+} 
+//_______getChef functions__________________________________________________
 
 function getChef(request, response) {
 	console.log("Got it: ");
