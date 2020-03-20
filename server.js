@@ -22,7 +22,7 @@ app.post("/", postDetails);
 
 //app.get("/cool", (req, res) => res.send(cool()));
 
-app.get('/getPerson', getChef);
+app.get('/getChef', getChef);
 app.get('/getRecipe', getRecipe);
 //var ms = require('./mathService');
 
