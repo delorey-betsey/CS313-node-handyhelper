@@ -8,12 +8,12 @@
 <p>2. Next:        Choose operation--times 2 or divided by 2.</p>
 <br><br>
 <h1>* * ADD RECIPE DETAILS * *</h1>
-<form method="post" id="processInput">
+<form method="post" id="processDetails">
     <input type="text" placeholder="Title"        name="title"/>
     <input type="text" placeholder="Instructions" name="instructions"/>
     <input type="text" placeholder="Servings"     name="servings"/>
     <input type="text" placeholder="Recipe Notes" name="rnotes"/>
-    <input type="submit" value="SUBMIT">
+    <input type="submit" value="SUBMIT DETAILS">
 </form>
 
 <br><br>
@@ -27,8 +27,24 @@
 
 <br><br>
 <h1>* * ADD INGREDIENTS * *</h1>
+<form method="post" id="processIngredient">
+    <input type="text" placeholder="Item"             name="item"/>
+    <input type="text" placeholder="Amount"           name="amount"/>
+    <input type="text" placeholder="Measure"          name="measure"/>
+    <input type="text" placeholder="Ingredient Notes" name="inotes"/>
+    <input type="submit" value="SUBMIT INGREDIENT">
+</form>
+<br><br>
+<p>Ingredient = <%=item%> <%=amount%> <%=measure%> <%=inotes%></p>
+
+<!-- <br>
+<p>Instructions = <%=amount%> </p>
+<br>
+<p>Servings     = <%=measure%> </p>
+<br>
+<p>Recipe Notes = <%=inotes%> </p> -->
 <!-- COMMENT:  ARTWORK     -->
-<form method="post" action="">
+<!-- <form method="post" action=""> -->
     <!-- <div class="tanbackground">
             <button type="submit" name="addbutton" value="addbutton"><img class="button" src="images/addbutton.jpg" alt="addbutton"></button>      
    </div>    
@@ -51,7 +67,7 @@
                     echo "<div>Notes:       $itemnotes  </div>";                        
                 echo "</div>";
             }  
-        <!-- $_SESSION["items"] = $items;        
+        $_SESSION["items"] = $items;        
         ?> -->
         <!-- <br><br><br>                  
     </div>

@@ -33,8 +33,8 @@ function getData(req, res) {
   res.render('result', { title: '', instructions: '', servings: '', rnotes: ''});
 }
 
-function postData(req, res) {
-  console.log("Posting data");
+function postDetails(req, res) {
+  console.log("Posting details");
   console.log(req.body.title);
   console.log(req.body.instructions);
   console.log(req.body.servings);
@@ -47,6 +47,20 @@ function postData(req, res) {
 						 servings:req.body.servings, 
 						 rnotes:req.body.rnotes});
 }
+function postIngredient(req, res) {
+	console.log("Posting ingredient");
+	console.log(req.body.item);
+	console.log(req.body.amount);
+	console.log(req.body.measure);
+	console.log(req.body.inotes);
+	
+	//var result = ms.computeOperation(req.body.sign, req.body.var1, req.body.var2);
+	//console.log(result);
+	res.render('result', { item:req.body.item, 
+						   amount:req.body.amount, 
+						   measure:req.body.measure, 
+						   inotes:req.body.inotes});
+  }
 //________________________________________________
 function getPerson(request, response) {
 	console.log("Got it: ");
