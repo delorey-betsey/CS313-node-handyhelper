@@ -36,7 +36,7 @@ CREATE TABLE ingredients(
 	itemNotes TEXT
 );
 INSERT INTO ingredients(ingredientID,recipeID,item,amount,measure,itemNotes) 
-VALUES  (500, 200, 'chow mein vegetables', 30, 'ounce',
+VALUES  (0, 200, 'chow mein vegetables', 30, 'ounce',
               'Large LaChoy canned chow mein vegetables.');
 INSERT INTO ingredients(recipeID,item,amount,measure) 
 VALUES  (200, 'celery', 1.5, 'cup'),
