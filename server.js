@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const cool = require('cool-ascii-faces');
+//const cool = require('cool-ascii-faces');
 const { Pool } = require("pg"); 
 const bodyParser = require('body-parser'); 
 
@@ -20,7 +20,7 @@ app.get("/", getDetails);
 app.post("/", postDetails);
 // app.post("/", postIngredient);
 
-app.get("/cool", (req, res) => res.send(cool()));
+//app.get("/cool", (req, res) => res.send(cool()));
 
 app.get('/getPerson', getPerson);
 //var ms = require('./mathService');
