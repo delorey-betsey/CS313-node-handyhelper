@@ -22,7 +22,7 @@ app.post("/", postDetails);
 
 //app.get("/cool", (req, res) => res.send(cool()));
 
-app.get('/getPerson', getPerson);
+app.get('/getPerson', getChef);
 app.get('/getRecipe', getRecipe);
 //var ms = require('./mathService');
 
@@ -117,18 +117,18 @@ function getRecipeFromDB(id, callback) {
 } 
 //_______getPerson functions__________________________________________________
 
-function getPerson(request, response) {
+function getChef(request, response) {
 	console.log("Got it: ");
 	var id = request.query.id;
 	console.log("Retrieving person with id: ", id); 
 
-	getPersonFromDB(id, function(error, result) {
+	getChefFromDB(id, function(error, result) {
 		console.log("Back from the database with results:", result);
 		response.json(result);
 	});
 }
 
-function getPersonFromDB(id, callback) {
+function getChefFromDB(id, callback) {
      console.log("Back from the getPersonFromDB function with the results: " + id);
 
 	 //var result = {id: 444, first: "Betsey", last: "Delorey", birthdate: "1954-12-16"};
