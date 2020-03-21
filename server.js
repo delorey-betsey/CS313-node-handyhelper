@@ -41,7 +41,7 @@ app.listen(app.get("port"), function() {
 function getDetails(req, res) {
   console.log("Getting details");
   res.render('result', { title: '', instructions: '', servings: '', rnotes: '',
-                         amount: '', measure: '', item: '', inotes: ''});
+  						item: '', amount: '', measure: '',  inotes: ''});
 }
 // function getIngredient(req, res) {
 // 	console.log("Getting ingredient");  
