@@ -4,8 +4,8 @@ const app = express();
 const { Pool } = require("pg"); 
 const bodyParser = require('body-parser'); 
 
-const connectionString = process.env.DATABASE_URL || "postgres://kyqsvxntadtknr:3e889cae426990eff6d8cdd7fdf8924ee8821e88fd9baa08e007d5d59eb65fe5@ec2-18-209-187-54.compute-1.amazonaws.com:5432/d6bagnvea9jcap?ssl=true";
-
+const connectionString = process.env.DATABASE_URL || "postgres://xeuolzgrfowtaq:6b8c8e22e66da68f1ef2e992c44f8c484f2a2f85ee874ad6f182ff673d27808b@ec2-18-206-84-251.compute-1.amazonaws.com:5432/d49k598khgjq6h?ssl=true";
+//postgres://xeuolzgrfowtaq:6b8c8e22e66da68f1ef2e992c44f8c484f2a2f85ee874ad6f182ff673d27808b@ec2-18-206-84-251.compute-1.amazonaws.com:5432/d49k598khgjq6h
 const pool = new Pool({connectionString: connectionString});
 
 app.set('view engine', 'ejs');
