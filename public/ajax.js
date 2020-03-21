@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("form#processDetails").on('submit', function(e){
+    $("form#storeRecipe").on('submit', function(e){
         e.preventDefault();
         var title        = $('input[name=title]').val();
         var instructions = $('input[name=instructions]').val();   
@@ -29,27 +29,3 @@ $(document).ready(function(){
         });
     });
 });
-
-// $(document).ready(function(){
-//     $("form#processIngredient").on('submit', function(e){
-//         e.preventDefault();
-//         var item     = $('input[name=item]').val();
-//         var amount   = $('input[name=amount]').val();   
-//         var measure  = $('input[name=measure]').val();          
-//         var inotes   = $('input[name=inotes]').val();
-//         $.ajax({
-//             type: 'post',
-//             url: '/ajax',
-//             data: data{
-//                 item:   item,
-//                 amount: amount,
-//                 measure:measure,
-//                 inotes: inotes
-// 	        },
-//             dataType: 'text'
-//         })
-//         .done(function(data){
-//             $('h1').html(data.quote);
-//         });
-//     });
-// });

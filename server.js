@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-//const cool = require('cool-ascii-faces');
+const cool = require('cool-ascii-faces');
 const { Pool } = require("pg"); 
 const bodyParser = require('body-parser'); 
 
@@ -15,13 +15,19 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", getDetails);
-// app.get("/", getIngredient);
 
 app.post("/", postDetails);
-// app.post("/", postIngredient);
 
-//app.get("/cool", (req, res) => res.send(cool()));
+app.get("/cool", (req, res) => res.send(cool()));
 
+app.get('/searchAllChefs', searchAllChefs);
+app.get('/searchAllRecipes', searchAllRecipes);
+
+app.post('/divideRecipe', divideRecipe);
+app.post('/doubleRecipe', doubleRecipe);
+app.post('/addRecipe', addRecipe);
+
+//below three gets will not be used in final but work for now:
 app.get('/getChef', getChef);
 app.get('/getRecipe', getRecipe);
 app.get('/getIngredients', getIngredients);
@@ -30,10 +36,8 @@ app.get('/getIngredients', getIngredients);
 app.listen(app.get("port"), function() {
   console.log("Now listening on port: ", app.get("port"));
 });
-
-
-//_________getDetails functions_________________________________________
-
+//___________________________________________________________________
+//getDetails functions_________________________________________
 function getDetails(req, res) {
   console.log("Getting details");
   res.render('result', { title: '', instructions: '', servings: '', rnotes: '',
@@ -66,23 +70,7 @@ function postDetails(req, res) {
 						 item:        req.body.item, 
 						 inotes:      req.body.inotes});
 }
-// function postIngredient(req, res) {
-// 	console.log("Posting ingredient");
-// 	console.log(req.body.item);
-// 	console.log(req.body.amount);
-// 	console.log(req.body.measure);
-// 	console.log(req.body.inotes);
-	
-// 	//var result = ms.computeOperation(req.body.sign, req.body.var1, req.body.var2);
-// 	//console.log(result);
-// 	res.render('result', { item:   req.body.item, 
-// 						   amount: req.body.amount, 
-// 						   measure:req.body.measure, 
-// 						   inotes: req.body.inotes});
-//   }
-
-
-//__________getRecipe functions______________________________________
+//getRecipe functions______________________________________
 
 function getRecipe(request, response) {
 	console.log("Got recipe: ");
@@ -94,7 +82,6 @@ function getRecipe(request, response) {
 		response.json(result);
 	});
 }
-
 function getRecipeFromDB(id, callback) {
      console.log("Back from the getRecipeFromDB function with the recipe: " + id);
 
@@ -116,7 +103,7 @@ function getRecipeFromDB(id, callback) {
 		callback(null, result.rows);
 	});
 } 
-//__________getIngredients functions______________________________________
+//getIngredients functions______________________________________
 
 function getIngredients(request, response) {
 	console.log("Got ingredients: ");
@@ -128,7 +115,6 @@ function getIngredients(request, response) {
 		response.json(result);
 	});
 }
-
 function getIngredientsFromDB(id, callback) {
      console.log("Back from the getIngredientsFromDB function with the ingredients: " + id);
 
@@ -150,7 +136,7 @@ function getIngredientsFromDB(id, callback) {
 		callback(null, result.rows);
 	});
 } 
-//_______getChef functions__________________________________________________
+//getChef functions__________________________________________________
 
 function getChef(request, response) {
 	console.log("Got it: ");
@@ -184,3 +170,62 @@ function getChefFromDB(id, callback) {
 		callback(null, result.rows);
 	});
 } 
+//___________________________________________________________________
+//search all chefs functions______________________________________
+
+function searchAllChefs(request, response) {
+	console.log("Retrieving all chefs"); 
+	app.get('/users', (req, res) => {
+		// db.all() fetches all results from an SQL query into the 'rows' variable:
+		db.all('SELECT firstName FROM chefs', (err, rows) => {
+		  console.log(rows);
+		//   const allChefs = rows.map(e => e.firstName);
+		  console.log(allChefs);
+		  res.send(allChefs);
+		});
+	  });
+
+	// getAllChefsFromDB(id, function(error, result) {
+	// 	console.log("Back from the database with all chefs:", result);
+	// 	response.json(result);
+	// });
+}
+//search all recipes functions______________________________________
+
+function searchAllRecipes(request, response) {
+	console.log("Retrieving all recipes"); 
+
+	// getAllRecipesFromDB(id, function(error, result) {
+	// 	console.log("Back from the database with all recipes:", result);
+	// 	response.json(result);
+	// });
+}
+//divideRecipe functions__________________________________________________
+function divideRecipe(request, response) {
+	console.log("hit divideRecipe"); 
+
+	// doDivision(id, function(error, result) {
+	// 	console.log("Sending back division:", result);
+	// 	response.json(result);
+	// });
+}
+
+//doubleRecipe functions__________________________________________________
+function doubleRecipe(request, response) {
+	console.log("hit doubleRecipe"); 
+
+	// doDouble(id, function(error, result) {
+	// 	console.log("Sending back double:", result);
+	// 	response.json(result);
+	// });
+}
+
+//addRecipe function______________________________________________________
+function addRecipe(request, response) {
+	console.log("hit add recipe"); 
+
+	// addRecipeToDB(id, function(error, result) {
+	// 	console.log("Added new recipe:", result);
+	// 	response.json(result);
+	// });
+}
