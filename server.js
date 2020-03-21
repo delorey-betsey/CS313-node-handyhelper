@@ -37,39 +37,39 @@ app.listen(app.get("port"), function() {
   console.log("Now listening on port: ", app.get("port"));
 });
 //___________________________________________________________________
-//getDetails functions_________________________________________
+//getDetails postDetails functions_________________________________________
 function getDetails(req, res) {
-  console.log("Getting details");
-  res.render('result', { title: '', instructions: '', servings: '', rnotes: '',
-  						item: '', amount: '', measure: '',  inotes: ''});
-}
-// function getIngredient(req, res) {
-// 	console.log("Getting ingredient");  
-// 	res.render('result', { item: '', amount: '', measure: '', inotes: ''});
-//   }
-
-function postDetails(req, res) {
-  console.log("Posting details");
-  console.log(req.body.title);
-  console.log(req.body.instructions);
-  console.log(req.body.servings);
-  console.log(req.body.rnotes);
-  console.log(req.body.amount);
-  console.log(req.body.measure);
-  console.log(req.body.item);
-  console.log(req.body.inotes);
+	console.log("Getting details");
+	res.render('result', { title: '', instructions: '', servings: '', rnotes: '',
+						   amount: '', measure: '', item: '', inotes: ''});
+  }
+  // function getIngredient(req, res) {
+  // 	console.log("Getting ingredient");  
+  // 	res.render('result', { item: '', amount: '', measure: '', inotes: ''});
+  //   }
   
-  //var result = ms.computeOperation(req.body.sign, req.body.var1, req.body.var2);
-  //console.log(result);
-  res.render('result', { title:       req.body.title, 
-						 instructions:req.body.instructions, 
-						 servings:    req.body.servings, 
-						 rnotes:      req.body.rnotes,						  
-						 amount:      req.body.amount, 
-						 measure:     req.body.measure,
-						 item:        req.body.item, 
-						 inotes:      req.body.inotes});
-}
+  function postDetails(req, res) {
+	console.log("Posting details");
+	console.log(req.body.title);
+	console.log(req.body.instructions);
+	console.log(req.body.servings);
+	console.log(req.body.rnotes);
+	console.log(req.body.amount);
+	console.log(req.body.measure);
+	console.log(req.body.item);
+	console.log(req.body.inotes);
+	
+	//var result = ms.computeOperation(req.body.sign, req.body.var1, req.body.var2);
+	//console.log(result);
+	res.render('result', { title:       req.body.title, 
+						   instructions:req.body.instructions, 
+						   servings:    req.body.servings, 
+						   rnotes:      req.body.rnotes,						  
+						   amount:      req.body.amount, 
+						   measure:     req.body.measure,
+						   item:        req.body.item, 
+						   inotes:      req.body.inotes});
+  }
 //getRecipe functions______________________________________
 
 function getRecipe(request, response) {

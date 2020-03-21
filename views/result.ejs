@@ -23,13 +23,23 @@
     <br><br>
 
     <p>* * ADD NEW RECIPE DETAILS and INGREDIENTS* *</p>
-    <form method="post" id="storeRecipe">
+    <!-- <form method="post" id="postDetails">
         <input type="submit" value="STORE RECIPE">
-        <br><br>
-        <input type="text" placeholder="Title"        name="1title"/>
-        <input type="text" placeholder="Instructions" name="1instructions"/>
-        <input type="text" placeholder="Servings"     name="1servings"/>
-        <input type="text" placeholder="Recipe Notes" name="1rnotes"/>
+        <br><br> -->
+        <form method="post" id="processDetails">
+            <input type="submit" value="SUBMIT">
+            <br><br>
+            <input type="text" placeholder="Title"        name="title"/>
+            <input type="text" placeholder="Instructions" name="instructions"/>
+            <input type="text" placeholder="Servings"     name="servings"/>
+            <input type="text" placeholder="Recipe Notes" name="rnotes"/> 
+            <br><br>
+            <input type="text" placeholder="Amount"           name="amount"/>
+            <input type="text" placeholder="Measure"          name="measure"/>
+            <input type="text" placeholder="Item"             name="item"/>
+            <input type="text" placeholder="Ingredient Notes" name="inotes"/>
+
+
         <br><br>    
         <input type="text" placeholder="Item"             name="2item"/>
         <input type="text" placeholder="Amount"           name="2amount"/>
@@ -77,10 +87,10 @@
         <input type="text" placeholder="Ingredient Notes" name="10inotes"/>
         <br><br>
     </form>
-    <!-- <p>Title        = <%=title%> </p>
+    <p>Title        = <%=title%> </p>
     <p>Instructions = <%=instructions%> </p>
     <p>Servings     = <%=servings%> </p>
     <p>Recipe Notes = <%=rnotes%> </p>
-    <p>Ingredient   = <%=amount%> <%=measure%> <%=item%> <%=inotes%></p> -->
+    <p>Ingredient   = <%=amount%> <%=measure%> <%=item%> <%=inotes%></p>
 </body>
 </html>
