@@ -21,17 +21,17 @@ app.post("/", postDetails);
 //app.get("/cool", (req, res) => res.send(cool()));
 
 app.get('/searchAllChefs', searchAllChefs);
-app.get('/searchAllRecipes', searchAllRecipes);
+// app.get('/searchAllRecipes', searchAllRecipes);
 
-app.post('/divideRecipe', divideRecipe);
-app.post('/doubleRecipe', doubleRecipe);
-app.post('/addRecipe', addRecipe);
+// app.post('/divideRecipe', divideRecipe);
+// app.post('/doubleRecipe', doubleRecipe);
+// app.post('/addRecipe', addRecipe);
 
-//below three gets will not be used in final but work for now:
-app.get('/getChef', getChef);
-app.get('/getRecipe', getRecipe);
-app.get('/getIngredients', getIngredients);
-//var ms = require('./mathService');
+// //below three gets will not be used in final but work for now:
+// app.get('/getChef', getChef);
+// app.get('/getRecipe', getRecipe);
+// app.get('/getIngredients', getIngredients);
+// //var ms = require('./mathService');
 
 app.listen(app.get("port"), function() {
   console.log("Now listening on port: ", app.get("port"));
@@ -70,7 +70,41 @@ function getDetails(req, res) {
 						   item:        req.body.item, 
 						   inotes:      req.body.inotes});
   }
-//getRecipe functions______________________________________
+//getChef functions__________________________________________________
+
+function searchAllChefs(request, response) {
+	console.log("hit searchAllChefs");
+	// var id = request.query.id;
+	console.log("Retrieving all chefs"); 
+
+	getChefsFromDB(id, function(error, chefs) {
+		console.log("Back from the database with results:", chefs);
+		response.json(chefs);
+		res.render('chefs', chefs);
+	});
+}
+function getChefsFromDB(callback) {
+	console.log("Back from the getChefsFromDB function with all chefs");
+
+	//var result = {id: 444, first: "Betsey", last: "Delorey", birthdate: "1954-12-16"};
+	var sql = "SELECT userID, firstName, lastName FROM chefs";
+
+	// var params = [id];
+
+   pool.query(sql, params, function(err, chefs) {
+   
+	   if (err) {
+		   console.log("Error with database occurred. ")
+		   console.log(err);
+		   callback(err, null);
+	   }
+
+		console.log("Found db result: " + JSON.stringify(chefs.rows));
+
+	   callback(null, chefs.rows);
+   });
+} 
+  //getRecipe functions______________________________________
 
 function getRecipe(request, response) {
 	console.log("Got recipe: ");
@@ -138,16 +172,16 @@ function getIngredientsFromDB(id, callback) {
 } 
 //getChef functions__________________________________________________
 
-function getChef(request, response) {
-	console.log("Got it: ");
-	var id = request.query.id;
-	console.log("Retrieving person with id: ", id); 
+// function getChef(request, response) {
+// 	console.log("Got it: ");
+// 	var id = request.query.id;
+// 	console.log("Retrieving person with id: ", id); 
 
-	getChefFromDB(id, function(error, result) {
-		console.log("Back from the database with results:", result);
-		response.json(result);
-	});
-}
+// 	getChefFromDB(id, function(error, result) {
+// 		console.log("Back from the database with results:", result);
+// 		response.json(result);
+// 	});
+// }
 
 function getChefFromDB(id, callback) {
      console.log("Back from the getPersonFromDB function with the results: " + id);
