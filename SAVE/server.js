@@ -1,21 +1,40 @@
-const express = require('express');
-const app = express();
-//const cool = require('cool-ascii-faces');
-const { Pool } = require("pg"); 
-const bodyParser = require('body-parser'); 
-
-const connectionString = process.env.DATABASE_URL || "postgres://xeuolzgrfowtaq:6b8c8e22e66da68f1ef2e992c44f8c484f2a2f85ee874ad6f182ff673d27808b@ec2-18-206-84-251.compute-1.amazonaws.com:5432/d49k598khgjq6h?ssl=true";
-//postgres://xeuolzgrfowtaq:6b8c8e22e66da68f1ef2e992c44f8c484f2a2f85ee874ad6f182ff673d27808b@ec2-18-206-84-251.compute-1.amazonaws.com:5432/d49k598khgjq6h
+require('dotenv').config()
+const express = require('express')
+const app = express()
+const path = require('path')
+const url = require('url')
+// const cool = require('cool-ascii-faces');
+const connectionString = process.env.DATABASE_URL;
+const { Pool } = require('pg');
 const pool = new Pool({connectionString: connectionString});
+//// const connectionString = process.env.DATABASE_URL || "postgres://xeuolzgrfowtaq:6b8c8e22e66da68f1ef2e992c44f8c484f2a2f85ee874ad6f182ff673d27808b@ec2-18-206-84-251.compute-1.amazonaws.com:5432/d49k598khgjq6h?ssl=true";
+//// postgres://xeuolzgrfowtaq:6b8c8e22e66da68f1ef2e992c44f8c484f2a2f85ee874ad6f182ff673d27808b@ec2-18-206-84-251.compute-1.amazonaws.com:5432/d49k598khgjq6h
+app.set("port", (process.env.PORT || 5000))
 
-app.set('view engine', 'ejs');
-app.set("port", (process.env.PORT || 5000));
 
-app.use(express.static("public"));
-app.use(bodyParser.urlencoded({ extended: true }));
+const bodyParser = require('body-parser');
 
-app.get("/", getDetails);
+var session = require('express-session')
+//set up sessions??
+// app.use(session({
+//   secret: 'my-secret-team-secret',
+//   resave: false,
+//   saveUninitialized: true
+// }))
 
+// app.use(express.static("public"));
+// app.set('views', path.join(__dirname, 'views'))
+// app.set('view engine', 'ejs')
+app.use(bodyParser.urlencoded({ extended: true }))
+
+app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+app.set('views', path.join(__dirname, 'public/views'))
+app.set('view engine', 'ejs')
+
+app.get('/', (req, res) => res.render('result'));
+app.post("/", getDetails);
 app.post("/", postDetails);
 
 //app.get("/cool", (req, res) => res.send(cool()));
