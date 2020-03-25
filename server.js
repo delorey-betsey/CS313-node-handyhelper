@@ -12,10 +12,12 @@ app.set('view engine', 'ejs');
 app.set("port", (process.env.PORT || 5000));
 
 app.use(express.static("public"));
+app.set('views', path.join(__dirname, 'views'))
+  app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.get('/', (req, res) => res.render('result'));
 app.get("/", getDetails);
-
 app.post("/", postDetails);
 
 //app.get("/cool", (req, res) => res.send(cool()));
