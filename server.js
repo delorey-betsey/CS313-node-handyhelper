@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express');
 const path = require('path');
-app.set("port", (process.env.PORT || 5000));
+app.set("PORT", (process.env.PORT || 5000));
 const url = require('url')
 // const cool = require('cool-ascii-faces');
 // const connectionString = process.env.DATABASE_URL;
@@ -20,9 +20,6 @@ var session = require('express-session')
 //   resave: false,
 //   saveUninitialized: true
 // }))
-
-app.set('view engine', 'ejs');
-
 
 // app.use(express.static("public"));
 // app.set('views', path.join(__dirname, 'views'))
@@ -54,8 +51,8 @@ app.get('/getRecipe', getRecipe);
 app.get('/getIngredients', getIngredients);
 //var ms = require('./mathService');
 
-app.listen(app.get("port"), function() {
-  console.log("Now listening on port: ", app.get("port"));
+app.listen(app.get("PORT"), function() {
+  console.log("Now listening on port: ", app.get("PORT"));
 });
 //___________________________________________________________________
 // //getDetails postDetails functions_________________________________________
