@@ -1,30 +1,44 @@
+<!DOCTYPE html>
 <html>
-<head>
-<title>HandyHelper</title>
-<script  src="https://code.jquery.com/jquery-3.2.1.min.js"
-         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-         crossorigin="anonymous">
-</script>
-<script src="/ajax.js"></script>
-<script type="text/javascript"></script>
-</head>
+	<head>
+		<title>Landing</title>
+		<script
+			src="https://code.jquery.com/jquery-3.2.1.min.js"
+			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			crossorigin="anonymous">
+		</script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<!-- <script src="test.js"></script> -->
+	</head>
 
 <body>
-    
-    <button id="home">Home</button>  
-    <br><br>    
-    <form method="post" id="login">        
-        <input type="text" id="username" placeholder="username">
-        <input type="password" id="password" placeholder="password">        
-        <button onclick="login();">Log in</button>
-        <button onclick="logout();">Log out</button><br>
-    </form> 
-    <div id="status"></div>
-    <br><br>  
+	<button id="home">Home</button>  
+	<button id="login">Login</button>
+	<button id="logout">Logout</button>
+	<p id="loginResults"></p> 
+<!-- ----------------LOGIN--------------------------- -->
+<!-- ------------------------------------------- -->
+	<div>
+		<input id="username" type="text" placeholder="username">
+		<input id="password" type="text" placeholder="password">
+		<br><br>
+	</div>
+
+	<div>
+		<button id="getTimestamp">Get Timestamp</button> 
+		<button id="stayCool">Stay Cool</button>
+		<button id="beCool">Be Cool</button>
+		<p id="timestampResults"></p>
+	</div>
+	<div id="status"></div>
+
+	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+	<br><br>  
     <button id="searchAllChefs">Search all chefs.</button>
     <button id="addNewRecipe">Add recipe.</button>
 
-    <h1>* * Welcome to HANDY HELPER * *</h1>
+    <h1>* Welcome to HANDY HELPER *</h1>
     <p>Save and share recipes!</p>
     <p>Divide or double your recipes in a Snap!!</p>    
     
@@ -34,76 +48,37 @@
     <button id="doubleRecipe">Double recipe.</button>
     <br><br>
 
-    <p>* * ADD NEW RECIPE DETAILS and INGREDIENTS* *</p>
-    <!-- <form method="post" id="postDetails">
-        <input type="submit" value="STORE RECIPE">
-        <br><br> -->
-        <form method="post" id="processDetails">
-            <input type="submit" value="SUBMIT">
-            <br><br>
-            <input type="text" placeholder="Title"        name="title"/>
-            <input type="text" placeholder="Instructions" name="instructions"/>
-            <input type="text" placeholder="Servings"     name="servings"/>
-            <input type="text" placeholder="Recipe Notes" name="rnotes"/> 
-            <br><br>
-            <input type="text" placeholder="Item"             name="item"/>
-            <input type="text" placeholder="Amount"           name="amount"/>
-            <input type="text" placeholder="Measure"          name="measure"/>
-            <input type="text" placeholder="Ingredient Notes" name="inotes"/>
 
-
-        <br>   
-        <input type="text" placeholder="Item"             name="2item"/>
-        <input type="text" placeholder="Amount"           name="2amount"/>
-        <input type="text" placeholder="Measure"          name="2measure"/>
-        <input type="text" placeholder="Ingredient Notes" name="2inotes"/>
-        <br>
-        <input type="text" placeholder="Item"             name="3item"/>
-        <input type="text" placeholder="Amount"           name="3amount"/>
-        <input type="text" placeholder="Measure"          name="3measure"/>
-        <input type="text" placeholder="Ingredient Notes" name="3inotes"/>
-        <br>
-        <input type="text" placeholder="Item"             name="4item"/>
-        <input type="text" placeholder="Amount"           name="4amount"/>
-        <input type="text" placeholder="Measure"          name="4measure"/>
-        <input type="text" placeholder="Ingredient Notes" name="4inotes"/>
-        <br>
-        <input type="text" placeholder="Item"             name="5item"/>
-        <input type="text" placeholder="Amount"           name="5amount"/>
-        <input type="text" placeholder="Measure"          name="5measure"/>
-        <input type="text" placeholder="Ingredient Notes" name="5inotes"/>
-        <br>
-        <input type="text" placeholder="Item"             name="6item"/>
-        <input type="text" placeholder="Amount"           name="6amount"/>
-        <input type="text" placeholder="Measure"          name="6measure"/>
-        <input type="text" placeholder="Ingredient Notes" name="6inotes"/>
-        <br>
-        <input type="text" placeholder="Item"             name="7item"/>
-        <input type="text" placeholder="Amount"           name="7amount"/>
-        <input type="text" placeholder="Measure"          name="7measure"/>
-        <input type="text" placeholder="Ingredient Notes" name="7inotes"/>
-        <br>
-        <input type="text" placeholder="Item"             name="8item"/>
-        <input type="text" placeholder="Amount"           name="8amount"/>
-        <input type="text" placeholder="Measure"          name="8measure"/>
-        <input type="text" placeholder="Ingredient Notes" name="8inotes"/>
-        <br>
-        <input type="text" placeholder="Item"             name="9item"/>
-        <input type="text" placeholder="Amount"           name="9amount"/>
-        <input type="text" placeholder="Measure"          name="9measure"/>
-        <input type="text" placeholder="Ingredient Notes" name="9inotes"/>
-        <br>
-        <input type="text" placeholder="Item"             name="10item"/>
-        <input type="text" placeholder="Amount"           name="10amount"/>
-        <input type="text" placeholder="Measure"          name="10measure"/>
-        <input type="text" placeholder="Ingredient Notes" name="10inotes"/>
-        <br><br>
-    </form>
-    <p>Title        = <%=title%> </p>
-    <p>Instructions = <%=instructions%> </p>
-    <p>Servings     = <%=servings%> </p>
-    <p>Recipe Notes = <%=rnotes%> </p>
-    <p>Ingredient   = <%=item%> <%=amount%> <%=measure%> <%=inotes%></p>
 </body>
 </html>
+<!-- GET LOGIN FUNCTION------------------------------------------- -->
+<script>
+	$("#login").click(function(){
+		var username = $("#username").val();		
+		var password = $("#password").val();
+		var params = { username: username, password: password };
+		console.log(params);
+		$('#loginResults').text("Successfully logged in.");
+	})
+</script>
+<!-- ----------------GET TIMESTAMP FUNCTION--------------------------- -->
+<!-- ------------------------------------------- -->
+<script>
+	$("#getTimestamp").click(function () {
+		console.log("Hit servertime");
+		var time = new Date();		 
+		//var result = text(event.timestamp);	  
+		$("#status").text(time);
+		console.log(time); 
+		})
+</script>
 
+<!-- ----------------LOGOUT--------------------------- -->
+<!-- ------------------------------------------- -->
+<script>
+	$("#logout").click(function () {
+		console.log("Hit logout");		
+		// $('#loginResults').text("");
+		$('#loginResults').text("Successfully logged out.");
+		})
+</script>

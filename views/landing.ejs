@@ -8,39 +8,47 @@
 			crossorigin="anonymous">
 		</script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<!-- <script src="test.js"></script> -->
+		<script src="ajax.js"></script>
 	</head>
 
 <body>
+	<button id="home">Home</button>  
+	<button id="login">Login</button>
+	<button id="logout">Logout</button>
+	<p id="loginResults"></p> 
 <!-- ----------------LOGIN--------------------------- -->
 <!-- ------------------------------------------- -->
 	<div>
 		<input id="username" type="text" placeholder="username">
 		<input id="password" type="text" placeholder="password">
 		<br><br>
-		<button id="login">Login</button>
-		<button id="logout">Logout</button>
-		<p id="loginResults"></p>
 	</div>
-
-	<!-- <div>
-		<button id="logout">Logout</button>
-		<p id="logoutResults"></p>
-	</div> -->
 
 	<div>
-		<button id="getTimestamp">Get Timestamp</button>
+		<button id="getTimestamp">Get Timestamp</button> 
+		<button id="stayCool">Stay Cool</button>
+		<button id="beCool">Be Cool</button>
 		<p id="timestampResults"></p>
 	</div>
-
-	<!-- <div>
-		("Hit test.ejs ");
-		<input id="searchMovie" type="text" placeholder="Search..">
-		<button id="getMovies">Get Movies</button>
-		<p id="pResults"></p>
-	</div> -->
-
 	<div id="status"></div>
+
+	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+	<br><br>  
+    <button id="searchAllChefs">Search all chefs.</button>
+    <button id="addNewRecipe">Add recipe.</button>
+
+    <h1>* Welcome to HANDY HELPER *</h1>
+    <p>Save and share recipes!</p>
+    <p>Divide or double your recipes in a Snap!!</p>    
+    
+    <button id="searchAllRecipes">Search all recipes.</button>     
+    <button id="searchRecipeID">Get recipe by id.</button>     
+    <button id="divideRecipe">Divide recipe.</button>     
+    <button id="doubleRecipe">Double recipe.</button>
+    <br><br>
+
+
 </body>
 </html>
 <!-- GET LOGIN FUNCTION------------------------------------------- -->
@@ -51,7 +59,6 @@
 		var params = { username: username, password: password };
 		console.log(params);
 		$('#loginResults').text("Successfully logged in.");
-		$('#status').text(JSON.stringify(params));
 	})
 </script>
 <!-- ----------------GET TIMESTAMP FUNCTION--------------------------- -->
@@ -66,13 +73,12 @@
 		})
 </script>
 
-<!-- ----------------LOGOUT--------------------------- -->
+<!-- ----------------HOME--------------------------- -->
 <!-- ------------------------------------------- -->
 <script>
-	$("#logout").click(function () {
-		console.log("Hit logout");		
+	$("#home").click(function (req,res) {
+		console.log("Hit home");		
 		// $('#loginResults').text("");
-		$('#loginResults').text("Successfully logged out.");
-		$("#status").text("");
+		res.render('landing');
 		})
 </script>
