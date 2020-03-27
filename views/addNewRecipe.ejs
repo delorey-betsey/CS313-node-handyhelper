@@ -8,11 +8,13 @@
 			crossorigin="anonymous">
 		</script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<!-- <script src="test.js"></script> -->
+		<!-- <script src="ajax.js"></script> -->
 	</head>
 
 <body>
-	<button id="home">Home</button>  
+    <form action="/">
+        <button id="home">Home</button> 
+    </form> 
 	<button id="login">Login</button>
 	<button id="logout">Logout</button>
 	<p id="loginResults"></p> 
@@ -145,9 +147,12 @@
 <!-- ----------------LOGOUT--------------------------- -->
 <!-- ------------------------------------------- -->
 <script>
+$(document).ready(function(){
 	$("#logout").click(function () {
-		console.log("Hit logout");		
+		console.log("Hit logout");
 		// $('#loginResults').text("");
 		$('#loginResults').text("Successfully logged out.");
+		$("#status").text("");
 		})
+	});
 </script>

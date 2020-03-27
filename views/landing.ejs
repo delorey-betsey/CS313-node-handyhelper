@@ -8,7 +8,7 @@
 			crossorigin="anonymous">
 		</script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<script src="ajax.js"></script>
+		<!-- <script src="ajax.js"></script> -->
 	</head>
 
 <body>
@@ -16,14 +16,13 @@
 	<button id="login">Login</button>
 	<button id="logout">Logout</button>
 	<p id="loginResults"></p> 
-<!-- ----------------LOGIN--------------------------- -->
+<!-- ----------------LANDING PAGE--------------------------- -->
 <!-- ------------------------------------------- -->
 	<div>
 		<input id="username" type="text" placeholder="username">
 		<input id="password" type="text" placeholder="password">
 		<br><br>
 	</div>
-
 	<div>
 		<button id="getTimestamp">Get Timestamp</button> 
 		<button id="stayCool">Stay Cool</button>
@@ -31,26 +30,32 @@
 		<p id="timestampResults"></p>
 	</div>
 	<div id="status"></div>
-
 	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-
-	<br><br>  
-    <button id="searchAllChefs">Search all chefs.</button>
-    <button id="addNewRecipe">Add recipe.</button>
-
+	<br><br> 
+	<form method ="get" action="/displayAllChefs">
+		<button id="displayAllChefs">Display all chefs.</button>
+	</form> 
+	<form method ="get" action="/addNewRecipe">
+		<button id="addNewRecipe">Add new recipe.</button>
+	</form> 
+    
     <h1>* Welcome to HANDY HELPER *</h1>
     <p>Save and share recipes!</p>
-    <p>Divide or double your recipes in a Snap!!</p>    
+	<p>Divide or double your recipes in a Snap!!</p>   	 
     
-    <button id="searchAllRecipes">Search all recipes.</button>     
-    <button id="searchRecipeID">Get recipe by id.</button>     
-    <button id="divideRecipe">Divide recipe.</button>     
-    <button id="doubleRecipe">Double recipe.</button>
+	<form method ="get" action="/displayAllRecipes">
+		<button id="displayAllRecipes">Display all recipes.</button>
+	</form> 
+	<form method ="get" action="/doubleRecipe">
+		<button id="doubleRecipe">Double recipe.</button>
+	</form> 
+	<form method ="get" action="/divideRecipe">
+		<button id="divideRecipe">Divide recipe.</button>
+	</form> 
     <br><br>
-
-
 </body>
 </html>
+
 <!-- GET LOGIN FUNCTION------------------------------------------- -->
 <script>
 	$("#login").click(function(){
@@ -61,6 +66,19 @@
 		$('#loginResults').text("Successfully logged in.");
 	})
 </script>
+
+<!-- GET LOGOUT FUNCTION------------------------------------------- -->
+<script>
+$(document).ready(function(){
+	$("#logout").click(function () {
+		console.log("Hit logout");
+		// $('#loginResults').text("");
+		$('#loginResults').text("Successfully logged out.");
+		$("#status").text("");
+		})
+	});
+</script>
+
 <!-- ----------------GET TIMESTAMP FUNCTION--------------------------- -->
 <!-- ------------------------------------------- -->
 <script>
@@ -73,7 +91,7 @@
 		})
 </script>
 
-<!-- ----------------HOME--------------------------- -->
+<!-- ----------------SEARCH ALL CHEFS--------------------------- -->
 <!-- ------------------------------------------- -->
 <script>
 	$("#home").click(function (req,res) {
