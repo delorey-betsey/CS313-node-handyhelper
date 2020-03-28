@@ -1,5 +1,5 @@
 require('dotenv').config()
-const cool = require('cool-ascii-faces');
+//const cool = require('cool-ascii-faces');
 const express = require('express')
 const app = express();
 const path = require('path')
@@ -15,16 +15,26 @@ const pool = new Pool({connectionString: connectionString,ssl:true});
   app.use(express.static(path.join(__dirname, 'public')))
   app.use(express.json())
   app.use(express.urlencoded({extended: true}))
-  app.set('views', path.join(__dirname, 'views'))
+  app.set('views', path.join(__dirname, 'public/views'))
   app.set('view engine', 'ejs')
 
+//endpoints
   app.get('/', (req, res) => res.render('landing'));
-  app.get("/cool", (req, res) => res.send(cool()));
-  app.get('/addNewRecipe', (req, res) => res.render('addNewRecipe'));
+  //app.get("/cool", (req, res) => res.send(cool()));
+  app.get('/addNewRecipe', addNewRecipe);
   app.get('/displayAllChefs', displayAllChefs);
   app.get('/displayAllRecipes', displayAllRecipes);
+  app.get('/divideRecipe', divideRecipe);
+  app.get('/doubleRecipe', doubleRecipe);
 
   app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
+//___________________________________________________________________
+//_______ADD NEW RECIPE FUNCTION_________________________________________
+function addNewRecipe(req, res) {
+    console.log("Hit add recipe");
+    res.render('addNewRecipe')
+    }
 
 //________________DISPLAY ALL CHEFS___________________  
 //________________________________________________
@@ -38,9 +48,9 @@ function displayAllChefs(request, response){
       if (error || result == null) {
         response.status(500).json({success: false, data: error});
       } else {
-        chefRows = JSON.stringify(result.rows);
-        response.render('displayAllChefs',{chefRows: chefRows});
-      }
+          chefRows = JSON.stringify(result.rows);
+          response.render('displayAllChefs',{chefRows: chefRows});
+        }
     });
   }
   function getAllChefsFromDb(callback) {
@@ -95,32 +105,17 @@ function displayAllRecipes(request, response){
 }
  
 //___________________________________________________________________
-//_______ADD NEW RECIPE FUNCTION_________________________________________
-function addNewRecipe(req, res) {
-    console.log("Getting details");
-    res.render('addNewRecipe', { title: '', instructions: '', servings: '', rnotes: '',
-                  amount: '', measure: '', item: '', inotes: ''});
-    }
+//_______DIVIDE RECIPE FUNCTION_________________________________________
+function divideRecipe(req, res) {
+  console.log("Hit divide recipe");
+  res.render('divideRecipe')
+  }
 
-function postNewRecipe(req, res) {
-    console.log("Posting details");
-    console.log(req.body.title);
-    console.log(req.body.instructions);
-    console.log(req.body.servings);
-    console.log(req.body.rnotes);
-    console.log(req.body.amount);
-    console.log(req.body.measure);
-    console.log(req.body.item);
-    console.log(req.body.inotes);
-  
-    res.render('addNewRecipe', { 
-      title:       req.body.title, 
-      instructions:req.body.instructions, 
-      servings:    req.body.servings, 
-      rnotes:      req.body.rnotes,						  
-      amount:      req.body.amount, 
-      measure:     req.body.measure,
-      item:        req.body.item, 
-      inotes:      req.body.inotes});
-}
+  //___________________________________________________________________
+//_______DOUBLE RECIPE FUNCTION_________________________________________
+function doubleRecipe(req, res) {
+  console.log("Hit double recipe");
+  res.render('doubleRecipe')
+  }
+
   

@@ -12,7 +12,9 @@
 	</head>
 
 <body>
-	<button id="home">Home</button>  
+	<form action="/">
+        <button id="home">Home</button> 
+    </form>   
 	<button id="login">Login</button>
 	<button id="logout">Logout</button>
 	<p id="loginResults"></p> 
@@ -52,51 +54,8 @@
 	<form method ="get" action="/divideRecipe">
 		<button id="divideRecipe">Divide recipe.</button>
 	</form> 
+	<br>
+	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *	
     <br><br>
 </body>
 </html>
-
-<!-- GET LOGIN FUNCTION------------------------------------------- -->
-<script>
-	$("#login").click(function(){
-		var username = $("#username").val();		
-		var password = $("#password").val();
-		var params = { username: username, password: password };
-		console.log(params);
-		$('#loginResults').text("Successfully logged in.");
-	})
-</script>
-
-<!-- GET LOGOUT FUNCTION------------------------------------------- -->
-<script>
-$(document).ready(function(){
-	$("#logout").click(function () {
-		console.log("Hit logout");
-		// $('#loginResults').text("");
-		$('#loginResults').text("Successfully logged out.");
-		$("#status").text("");
-		})
-	});
-</script>
-
-<!-- ----------------GET TIMESTAMP FUNCTION--------------------------- -->
-<!-- ------------------------------------------- -->
-<script>
-	$("#getTimestamp").click(function () {
-		console.log("Hit servertime");
-		var time = new Date();		 
-		//var result = text(event.timestamp);	  
-		$("#status").text(time);
-		console.log(time); 
-		})
-</script>
-
-<!-- ----------------SEARCH ALL CHEFS--------------------------- -->
-<!-- ------------------------------------------- -->
-<script>
-	$("#home").click(function (req,res) {
-		console.log("Hit home");		
-		// $('#loginResults').text("");
-		res.render('landing');
-		})
-</script>
