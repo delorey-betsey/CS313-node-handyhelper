@@ -8,7 +8,7 @@
 			crossorigin="anonymous">
 		</script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<!-- <script src="ajax.js"></script> -->
+		<script src="views/client.js"></script>
 	</head>
 
 <body>
@@ -56,6 +56,27 @@
 	</form> 
 	<br>
 	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *	
-    <br><br>
+	<br><br>
+	
+	<form method ="post" action="/addRecipe">
+
+		<input type="text" name="titlePost">
+		<label for="title">Title: </label>
+		<br>
+		<input type="text" name="instructionsPost">
+		<label for="instructions">Instructions: </label>
+		<br>
+		<input type="text" name="servingsPost">
+		<label for="servings">Servings: </label>
+		<br>
+		<input type="text" name="recipenotesPost">
+		<label for="recipenotes">Recipe Notes: </label>
+		<br>
+		<input type="submit" value="Add New Recipe">
+
+	</form> 
+
+	<div id="statusAdd"></div>
+
 </body>
 </html>

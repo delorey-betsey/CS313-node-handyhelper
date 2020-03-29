@@ -26,6 +26,16 @@ Mix soysauce, sugar, cornstarch, chicken brother.
 Stir into veggies. Heat medium-high until thickened.',
 4,'Family Favorite!');
 
+INSERT INTO recipes(recipeID,userID, title, instructions, servings, recipeNotes) 
+VALUES  (201,2, 'Chili', 
+'Brown hamburger, drain fat.  Add canned beans and tomatoes.  Season to taste.',
+10,'Feeds a crowd!');
+
+INSERT INTO recipes(recipeID,userID, title, instructions, servings, recipeNotes) 
+VALUES  (202,3, 'Personal Pizzas', 
+'Toast English muffins. Spread with canned pizza sauce, top with grated cheese.  Broil to melt cheese.',
+6,'Easy-peasy.');
+
 
 CREATE TABLE ingredients(
 	ingredientID SERIAL NOT NULL PRIMARY KEY,

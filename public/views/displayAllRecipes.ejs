@@ -8,7 +8,7 @@
 			crossorigin="anonymous">
 		</script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<!-- <script src="ajax.js"></script> -->
+		<script src="views/client.js"></script>
 	</head>
 
 <body>
@@ -56,39 +56,17 @@
 	</form> 
 	<br>
 	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-	<div>
-		<p>recipeRows = <%=recipeRows%> </p>
+	<div>		
+		<ul>
+			<%
+			recipeRows.forEach( rr => {
+				%>
+				<li>Recipe: <%=rr.title%> <br>  Servings = <%=rr.servings%>    <br>  Recipe Notes: <%=rr.recipenotes%>
+					<br>  Instructions: <%=rr.instructions%><br><br></li>
+				<%
+				})
+			%>
+		</ul>
 	</div>
 </body>
 </html>
-<!-- GET LOGIN FUNCTION------------------------------------------- -->
-<script>
-	$("#login").click(function(){
-		var username = $("#username").val();		
-		var password = $("#password").val();
-		var params = { username: username, password: password };
-		console.log(params);
-		$('#loginResults').text("Successfully logged in.");
-	})
-</script>
-<!-- ----------------GET TIMESTAMP FUNCTION--------------------------- -->
-<!-- ------------------------------------------- -->
-<script>
-	$("#getTimestamp").click(function () {
-		console.log("Hit servertime");
-		var time = new Date();		 
-		//var result = text(event.timestamp);	  
-		$("#status").text(time);
-		console.log(time); 
-		})
-</script>
-
-<!-- ----------------LOGOUT--------------------------- -->
-<!-- ------------------------------------------- -->
-<script>
-	$("#logout").click(function () {
-		console.log("Hit logout");		
-		// $('#loginResults').text("");
-		$('#loginResults').text("Successfully logged out.");
-		})
-</script>
