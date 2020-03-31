@@ -6,7 +6,7 @@ $(document).ready(function(){
 		var password = $("#password").val();
 		var params = { username: username, password: password };
 		console.log(params);
-		$('#loginResults').text("Successfully logged in.");
+		$('#loginResults').text("Successfully logged in:  " + username);
 	})
 });
 
@@ -29,6 +29,50 @@ $(document).ready(function(){
 	$("#logout").click(function () {
 		console.log("Hit logout");
 		$('#loginResults').text("Successfully logged out.");
+		})
+});
+
+// <!-- ----------------PROCESS ADD RECIPE FUNCTION--------------------------- -->
+// <!-- ------------------------------------------- -->
+
+// $(document).ready(function(){
+// 	$("#processAddRecipe").click(function () {
+// 		console.log("Hit process add recipe");
+	 	  
+// 		$("#addStatus").text("successful add message here");
+// 		})
+// });
+
+// <!-- ----------------INGREDIENTS FUNCTION--------------------------- -->
+// <!-- ------------------------------------------- -->
+
+$(document).ready(function(){
+	$("#ingredients").click(function () {
+		console.log("Hit ingredients");
+	 	  
+		$("#resultsStatus").text("need ingredients here");
+		})
+});
+
+// <!-- ----------------DOUBLE FUNCTION--------------------------- -->
+// <!-- ------------------------------------------- -->
+
+$(document).ready(function(){
+	$("#double").click(function () {
+		console.log("Hit double");
+	 	  
+		$("#resultsStatus").text("double ingredients here");
+		})
+});
+
+// <!-- ----------------DIVIDE FUNCTION--------------------------- -->
+// <!-- ------------------------------------------- -->
+
+$(document).ready(function(){
+	$("#divide").click(function () {
+		console.log("Hit divide");
+	 	  
+		$("#resultsStatus").text("divide ingredients here");
 		})
 });
 

@@ -37,9 +37,6 @@
 	<form method ="get" action="/displayAllChefs">
 		<button id="displayAllChefs">Display all chefs.</button>
 	</form> 
-	<form method ="get" action="/addNewRecipe">
-		<button id="addNewRecipe">Add new recipe.</button>
-	</form> 
     
     <h1>* Welcome to HANDY HELPER *</h1>
     <p>Save and share recipes!</p>
@@ -48,20 +45,18 @@
 	<form method ="get" action="/displayAllRecipes">
 		<button id="displayAllRecipes">Display all recipes.</button>
 	</form> 
-	<form method ="get" action="/doubleRecipe">
-		<button id="doubleRecipe">Double recipe.</button>
-	</form> 
-	<form method ="get" action="/divideRecipe">
-		<button id="divideRecipe">Divide recipe.</button>
-	</form> 
+
 	<br>
 	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-	<div>		
+	<div>
 		<ul>
 			<%
 			chefRows.forEach( cr => {
 				%>
-				<li>Chef ID = <%=cr.userid%>  <br>  First Name: <%=cr.firstname%>   <br> Last Name:  <%=cr.lastname%> <br><br></li>
+				<li>Chef ID = <%=cr.userid%>  <br>  First Name: <%=cr.firstname%>   <br> Last Name:  <%=cr.lastname%> <br></li>
+				<form method ="get" action="/addNewRecipe">
+					<button id="addNewRecipe" >Add New Recipe</button>
+				</form> <br><br>
 				<%
 				})
 			%>

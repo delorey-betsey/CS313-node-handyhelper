@@ -1,0 +1,183 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Wilson Prototype</title>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+	<link type="text/css" rel="stylesheet" href="/stylesheets/app1.css">
+	<title>wilson</title>
+	<script
+		src="https://code.jquery.com/jquery-3.2.1.min.js"
+		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+		crossorigin="anonymous">
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="views/client.js"></script>	
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/what-input/dist/what-input.js"></script>
+    <script src="bower_components/foundation-sites/dist/js/foundation.js"></script>
+    <script src="js/app.js"></script>
+   
+</head>
+
+<header class="header">
+	<!-- <nav class="large-12 small-1 columns contain-to-grid sticky">
+		<div class="top-bar">
+
+			<div class="top-bar-left">
+				<ul class="menu standout-font-size">
+					<li class="divider"></li>
+					<li class="active">
+						<a href="#">Home</a>
+					</li>
+					
+					<li class="divider "></li>
+					<li>
+						<a class="standout-color" href="#">Wilson, WY</a>
+					</li>
+					
+					<li class="divider"></li>
+					<li>
+						<a href="#">Contact</a>
+					</li>
+					
+					<li class="divider"></li>
+					<li>
+						<a href="#">About</a>
+					</li>
+					
+
+					
+					<li class="divider"></li>
+					<li>
+						<a href="#">Food</a>
+					</li>
+					
+					<li class="divider"></li>
+					<li>
+						<a href="#">Gallery</a>
+					</li>	
+				</ul>
+			</div>
+			
+			<div class="top-bar-right">	
+				<ul class="menu">
+					<li>
+					<a href="contact.html" class="alert button">Book Now!</a>
+					</li>
+				</ul>
+			</div>		
+		</div>
+	</nav> -->
+			<div class="large-12 small-1 columns title">
+			<h1>Welcome to Handy Helper</h1>
+		</div>
+		
+</header>	
+	<!-- <div class="row">
+
+	</div>	 -->
+<body>
+
+	<div class="main-content">
+	
+		<div class="large-12 columns fixed-bg bg-img-1 ">
+			
+
+		</div>
+					
+		<div class="large-12 columns scrolling-bg bg-color-2">
+			<h1>Sign In / Sign Up</h1>
+			<div class="container">
+				<form action="/">
+					<button id="home">Home</button> 
+				</form>   
+				<button id="login">Login</button>
+				<br><br>
+				<button id="logout">Logout</button>
+				<br><br>
+				<p id="loginResults"></p> 
+				<div>
+					<input id="username" type="text" placeholder="username">
+					<input id="password" type="text" placeholder="password">
+					<br><br>
+				</div>
+
+				<div id="status"></div>
+			</div> <!-- cd-container -->
+		</div>
+		
+		<div class="large-12 columns fixed-bg bg-img-2">
+			
+		</div>
+
+<!-- SEE ALL CHEFS -->
+
+		<div class="large-12 columns scrolling-bg bg-color-2">
+			<div class="container">
+				<h1>Chefs</h1>
+				<br>
+				<form method ="get" action="/displayAllChefs">
+					<button id="displayAllChefs">Display all chefs.</button>
+				</form> 
+				<br>
+				<form method ="get" action="/addNewRecipe">
+					<button id="addNewRecipe">Add new recipe.</button>
+				</form> 
+				
+			</div> <!-- cd-container -->
+		</div>
+
+<!-- SEE ALL RECIPES -->
+							
+		<div class="large-12 columns fixed-bg bg-img-3">
+			
+		</div>
+	<div class="large-12 columns scrolling-bg bg-color-2">
+			<div class="container">
+				<h1>RECIPES</h1>
+				<br>
+				<form method ="get" action="/displayAllRecipes">
+					<button id="displayAllRecipes">Display all recipes.</button>
+				</form> 
+				<br>
+				<button id="ingredients">See ingredients.</button>
+				<br><br> 
+				<button id="double">Double.</button>
+				<br><br>
+				<button id="divide">Divide.</button> 
+			</div> <!-- cd-container -->
+		</div>
+		
+		<div class="large-12 columns fixed-bg bg-img-4">
+			
+		</div>
+<!-- NEED A BREAK? -->					
+		<div class="large-12 columns scrolling-bg bg-color-2">
+			<div class="container">
+				<h1>Need a Break?</h1>
+				<br>
+				<div>
+					<button id="getTimestamp">Get Timestamp</button> 
+					<br><br>
+					<form action="https://weather.com/weather/tenday/l/789e30ea403dfe3285815bef19260340931c248557a988e96d1eeff46238728a/">
+						<button id="stayCool" type="submit">Stay Cool</button>
+					 </form>
+					<br>
+					<button id="beCool">Be Cool</button>
+					<br><br>
+					<p id="timestampResults"></p>
+				</div>
+			</div> <!-- cd-container -->
+		</div>	
+		<div class="large-12 columns fixed-footer">
+			<a class="thumbnail thumb-img-1" href="#"></a>
+			<a class="thumbnail thumb-img-2" href="#"></a>
+			<a class="thumbnail thumb-img-3" href="#"></a>
+			<a class="thumbnail thumb-img-4" href="#"></a>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Landing</title>
+		<title>Add</title>
 		<script
 			src="https://code.jquery.com/jquery-3.2.1.min.js"
 			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -11,72 +11,107 @@
 		<script src="views/client.js"></script>
 	</head>
 
-<body>
-	<form action="/">
-        <button id="home">Home</button> 
-    </form>   
-	<button id="login">Login</button>
-	<button id="logout">Logout</button>
-	<p id="loginResults"></p> 
-<!-- ----------------LANDING PAGE--------------------------- -->
-<!-- ------------------------------------------- -->
-	<div>
-		<input id="username" type="text" placeholder="username">
-		<input id="password" type="text" placeholder="password">
-		<br><br>
-	</div>
-	<div>
-		<button id="getTimestamp">Get Timestamp</button> 
-		<button id="stayCool">Stay Cool</button>
-		<button id="beCool">Be Cool</button>
-		<p id="timestampResults"></p>
-	</div>
-	<div id="status"></div>
-	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-	<br><br> 
-	<form method ="get" action="/displayAllChefs">
-		<button id="displayAllChefs">Display all chefs.</button>
-	</form> 
-	<form method ="get" action="/addNewRecipe">
-		<button id="addNewRecipe">Add new recipe.</button>
-	</form> 
-    
-    <h1>* Welcome to HANDY HELPER *</h1>
-    <p>Save and share recipes!</p>
-	<p>Divide or double your recipes in a Snap!!</p>   	 
-    
-	<form method ="get" action="/displayAllRecipes">
-		<button id="displayAllRecipes">Display all recipes.</button>
-	</form> 
-	<form method ="get" action="/doubleRecipe">
-		<button id="doubleRecipe">Double recipe.</button>
-	</form> 
-	<form method ="get" action="/divideRecipe">
-		<button id="divideRecipe">Divide recipe.</button>
-	</form> 
-	<br>
-	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *	
-	<br><br>
+	<body>
+		<form action="/">
+			<button id="home">Home</button> 
+		</form>   
+		<button id="login">Login</button>
+		<button id="logout">Logout</button>
+		<p id="loginResults"></p> 
+	<!-- ----------------LANDING PAGE--------------------------- -->
+	<!-- ------------------------------------------- -->
+		<div>
+			<input id="username" type="text" placeholder="username">
+			<input id="password" type="text" placeholder="password">
+			<br><br>
+		</div>
+		<div>
+			<button id="getTimestamp">Get Timestamp</button> 
+			<button id="stayCool">Stay Cool</button>
+			<button id="beCool">Be Cool</button>
+			<p id="timestampResults"></p>
+		</div>
+		<div id="status"></div>
+		* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+		<br><br> 
+		<form method ="get" action="/displayAllChefs">
+			<button id="displayAllChefs">Display all chefs.</button>
+		</form> 
+		
+		<h1>* Welcome to HANDY HELPER *</h1>
+		<p>Save and share recipes!</p>
+		<p>Divide or double your recipes in a Snap!!</p>   	 
+		
+		<form method ="get" action="/displayAllRecipes">
+			<button id="displayAllRecipes">Display all recipes.</button>
+		</form> 
 	
-	<form method ="post" action="/addRecipe">
-
-		<input type="text" name="titlePost">
-		<label for="title">Title: </label>
 		<br>
-		<input type="text" name="instructionsPost">
-		<label for="instructions">Instructions: </label>
-		<br>
-		<input type="text" name="servingsPost">
-		<label for="servings">Servings: </label>
-		<br>
-		<input type="text" name="recipenotesPost">
-		<label for="recipenotes">Recipe Notes: </label>
-		<br>
-		<input type="submit" value="Add New Recipe">
-
-	</form> 
-
-	<div id="statusAdd"></div>
-
+		* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *	
+		<p id="addStatus"></p>
+		
+		<form method ="get" action="/processAddRecipe">
+			<button id="processAddRecipe">Save New Recipe</button>
+		
+			<br><br>
+			<!-- DETAILS -->
+			<input type="text" placeholder="Chef ID"      name="chefID"/>
+			<input type="text" placeholder="Recipe Title" name="title"/>
+			<input type="text" placeholder="Instructions" name="instructions"/>
+			<input type="text" placeholder="Servings"     name="servings"/>
+			<input type="text" placeholder="Recipe Notes" name="rnotes"/> 
+			<br><br>
+			<!-- INGREDIENTS -->
+			<!-- <input type="text" placeholder="Item"             name="item"/>
+			<input type="text" placeholder="Amount"           name="amount"/>
+			<input type="text" placeholder="Measure"          name="measure"/>            
+			<input type="text" placeholder="Ingredient Notes" name="inotes"/> -->
+			<!-- <br>  
+			<input type="text" placeholder="Item"             name="2item"/>
+			<input type="text" placeholder="Amount"           name="2amount"/>
+			<input type="text" placeholder="Measure"          name="2measure"/>
+			<input type="text" placeholder="Ingredient Notes" name="2inotes"/>
+			<br>
+			<input type="text" placeholder="Item"             name="3item"/>
+			<input type="text" placeholder="Amount"           name="3amount"/>
+			<input type="text" placeholder="Measure"          name="3measure"/>
+			<input type="text" placeholder="Ingredient Notes" name="3inotes"/>
+			<br>
+			<input type="text" placeholder="Item"             name="4item"/>
+			<input type="text" placeholder="Amount"           name="4amount"/>
+			<input type="text" placeholder="Measure"          name="4measure"/>
+			<input type="text" placeholder="Ingredient Notes" name="4inotes"/>
+			<br>
+			<input type="text" placeholder="Item"             name="5item"/>
+			<input type="text" placeholder="Amount"           name="5amount"/>
+			<input type="text" placeholder="Measure"          name="5measure"/>
+			<input type="text" placeholder="Ingredient Notes" name="5inotes"/>
+			<br>
+			<input type="text" placeholder="Item"             name="6item"/>
+			<input type="text" placeholder="Amount"           name="6amount"/>
+			<input type="text" placeholder="Measure"          name="6measure"/>
+			<input type="text" placeholder="Ingredient Notes" name="6inotes"/>
+			<br>
+			<input type="text" placeholder="Item"             name="7item"/>
+			<input type="text" placeholder="Amount"           name="7amount"/>
+			<input type="text" placeholder="Measure"          name="7measure"/>
+			<input type="text" placeholder="Ingredient Notes" name="7inotes"/>
+			<br>
+			<input type="text" placeholder="Item"             name="8item"/>
+			<input type="text" placeholder="Amount"           name="8amount"/>
+			<input type="text" placeholder="Measure"          name="8measure"/>
+			<input type="text" placeholder="Ingredient Notes" name="8inotes"/>
+			<br>
+			<input type="text" placeholder="Item"             name="9item"/>
+			<input type="text" placeholder="Amount"           name="9amount"/>
+			<input type="text" placeholder="Measure"          name="9measure"/>
+			<input type="text" placeholder="Ingredient Notes" name="9inotes"/>
+			<br>
+			<input type="text" placeholder="Item"             name="10item"/>
+			<input type="text" placeholder="Amount"           name="10amount"/>
+			<input type="text" placeholder="Measure"          name="10measure"/>
+			<input type="text" placeholder="Ingredient Notes" name="10inotes"/>
+			<br><br> -->
+		</form> 
 </body>
 </html>

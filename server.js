@@ -20,9 +20,13 @@ const pool = new Pool({connectionString: connectionString,ssl:true});
 
 //endpoints
   app.get('/', (req, res) => res.render('landing'));
+  //app.get('/', (req, res) => res.render('wilson'));
+
+
   //app.get("/cool", (req, res) => res.send(cool()));
   app.get('/addNewRecipe', addNewRecipe);
-  app.post('/addRecipe', addRecipe);
+  app.get('/processAddRecipe', processAddRecipe);
+  
   app.get('/displayAllChefs', displayAllChefs);
   app.get('/displayAllRecipes', displayAllRecipes);
   app.get('/divideRecipe', divideRecipe);
@@ -30,38 +34,42 @@ const pool = new Pool({connectionString: connectionString,ssl:true});
 
   app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
-//___________________________________________________________________
+  //___________________________________________________________________
 //_______ADD NEW RECIPE FUNCTION_________________________________________
-function addNewRecipe(req,res) {
-  console.log("Hit add recipe");  
-  res.render('addNewRecipe');
+function addNewRecipe(req, res) {
+  console.log("Hit add new recipe");
+  res.render('addNewRecipe')
   }
 
-//___________________________________________________________________
-//_______ADD RECIPE FUNCTION_________________________________________
-function addRecipe(titlePost, instructionsPost, servingsPost, recipenotesPost, callback) {
-    console.log("Hit add recipe");
+    //___________________________________________________________________
+//_______TEST PROCESS... FUNCTION_________________________________________
+function processAddRecipe(chefID, title, instructions, servings, rnotes) {
+  console.log("Hit process add recipe");
+  //$("#addStatus").text("Your recipe has been saved.");
+  res.render('addNewRecipe')
+  }
 
-    var sql = "INSERT INTO recipes(title, instructions, servings, recipenotes) VALUES (titlePost, instructionsPost, servingsPost, recipenotesPost)";
-    var params = [titlePost, instructionsPost, servingsPost, recipenotesPost];
-    console.log("Created a new recipe");
+// //___________________________________________________________________
+// //_______PROCESS NEW RECIPE FUNCTION_________________________________________
+// function processAddRecipe(chefID, title, instructions, servings, rnotes, callback) {
+//   console.log("Hit process new recipe"); 
+//     var sql = "INSERT INTO recipes(userID, title, instructions, servings, recipenotes) VALUES ($1::text, $2::text, $3::text, $4::text, $5::text,)";
+//     var params = [chefID, title, instructions, servings, rnotes];
 
-    pool.query(sql, params, function(err, db_results) {
-        if (err) {
-            console.log("An error occurred with the DB");
-            console.log(err);
-            callback(err, null);
-        } else {
-           console.log("Inserted a recipe in DB: ");
-           console.log(db_results);
-
-           results = ({title: titleName, Add: "successful"}); 
-
-           callback(results);           
-       }
-    });
-    res.render('addNewRecipe');
-    }
+//     pool.query(sql, params, function(err, db_results) {
+//       if (err) {
+//           console.log("An error occurred with the DB");
+//           console.log(err);
+//           callback(err, null);
+//       } else {
+//          console.log("Inserted a recipe in DB: ");
+//          console.log(db_results);        
+//         }
+//     });
+//     // successful add callback
+//         $("#addStatus").text("Your recipe has been saved.");
+//         res.render('addNewRecipe');           
+//   };
 
 //________________DISPLAY ALL CHEFS___________________  
 //________________________________________________
