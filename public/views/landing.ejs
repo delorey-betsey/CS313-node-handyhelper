@@ -14,19 +14,31 @@
 	<body>
 		<form action="/">
 			<button id="home">Home</button> 
-		</form>   
+		</form>  
+<!-- ----------------LOGIN VV --------------------------- -->		
+		<form action="#" method="POST" id="logIn">
+			<label for="name ">Name:</label><br>
+			<input type="text" id="name" name="name"><br> 
+			<label for="password ">Password:</label><br>
+			<input type="text" id="password" name="password"><br><br>
+			<input type="button" name="submit_form" id="btn_submit" value="Log In" onclick="submitUser()">
+			<input type="button" name="newPerson_form" id="newPerson_submit" value="Sign Me Up!" onclick="newUser()">  
+		</form> 
+		<div id="clientResults"></div>
 
-		
-		<button id="login">Login</button>
+<!-- ----------------LOGIN ^^ --------------------------- -->
+
+
+		<!-- <button id="login">Login</button>
 		<button id="logout">Logout</button>
-		<p id="loginResults"></p> 
+		<p id="loginResults"></p> -->
 	<!-- ----------------LANDING PAGE--------------------------- -->
 	<!-- ------------------------------------------- -->
-		<div>
+		<!-- <div>
 			<input id="username" type="text" placeholder="username">
 			<input id="password" type="text" placeholder="password">
 			<br><br>
-		</div>
+		</div>  -->
 		<div>
 			<button id="getTimestamp">Get Timestamp</button> 
 			<!-- <button id="stayCool">Stay Cool</button> -->

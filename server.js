@@ -4,6 +4,10 @@ const express = require('express')
 const app = express();
 const path = require('path')
 const bodyParser = require('body-parser');
+
+const collectionController = require("./controllers/collectionController.js");
+const userController = require("./controllers/userController.js");
+
 const PORT = process.env.PORT || 5000
 
 const { Pool } = require("pg"); 
@@ -18,9 +22,14 @@ const pool = new Pool({connectionString: connectionString,ssl:true});
   app.set('views', path.join(__dirname, 'public/views'))
   app.set('view engine', 'ejs')
 
-//endpoints
+
+// -----------------TWO HOMEPAGES (landing and wilson------
   app.get('/', (req, res) => res.render('landing'));
   //app.get('/', (req, res) => res.render('wilson'));
+
+//endpoints
+  app.get("/logIn", userController.validateUser);
+  app.post("/newUser", userController.createNewUser);
 
 
   //app.get("/cool", (req, res) => res.send(cool()));

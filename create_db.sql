@@ -79,3 +79,12 @@ VALUES  ('Betsey', 'Delorey', '1878-08-28'),
 CREATE USER ta_user WITH PASSWORD 'ta_pass';
 GRANT SELECT, INSERT, UPDATE ON person TO ta_user;
 GRANT USAGE, SELECT ON SEQUENCE person_id_seq TO ta_user;
+
+CREATE TABLE security(
+	userName VARCHAR(100) NOT NULL,
+	password VARCHAR(100) NOT NULL
+);
+INSERT INTO security(userName,password) VALUES ('bdelorey', 'hello123');
+INSERT INTO security(userName,password) VALUES ('ochristensen', 'hello123');
+INSERT INTO security(userName,password) VALUES ('menamorado', 'hello123');
+INSERT INTO security(userName,password) VALUES ('user', 'user123');
