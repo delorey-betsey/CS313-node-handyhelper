@@ -14,20 +14,20 @@
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
-    "node-pre-gyp": "0.6.x",
     "dotenv": "^8.2.0",
     "ejs": "^2.7.4",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
+    "node-pre-gyp": "0.6.x",
     "pg": "^6.4.2"
   },
   "devDependencies": {
     "aws-sdk": "2.x"
   },
   "binary": {
-      "module_name": "your_module",
-      "module_path": "./lib/binding/",
-      "host": "https://your_module.s3-us-west-1.amazonaws.com"
+    "module_name": "your_module",
+    "module_path": "./lib/binding/",
+    "host": "https://your_module.s3-us-west-1.amazonaws.com"
   },
   "repository": {
     "type": "git",
@@ -43,4 +43,3 @@
   "homepage": " ",
   "author": "betsey delorey"
 }
-
