@@ -88,3 +88,26 @@ INSERT INTO security(userName,password) VALUES ('bdelorey', 'hello123');
 INSERT INTO security(userName,password) VALUES ('ochristensen', 'hello123');
 INSERT INTO security(userName,password) VALUES ('menamorado', 'hello123');
 INSERT INTO security(userName,password) VALUES ('user', 'user123');
+
+ALTER TABLE chefs 
+RENAME userID TO chefID;
+
+ALTER TABLE recipes
+ALTER COLUMN servings TYPE text;
+
+CREATE TABLE recipes(chefID) INT NOT NULL REFERENCES chefs(chefID);
+
+ALTER TABLE recipes 
+RENAME userID TO chefID;
+
+ALTER TABLE recipes
+ALTER COLUMN chefID TYPE int;
+
+ALTER TABLE chefs
+ALTER COLUMN chefID TYPE int;
+
+ADD FOREIGN KEY (group_id) REFERENCES supplier_groups (ID);
+
+CREATE TABLE recipes (
+   FOREIGN KEY (chefID) REFERENCES chefs(chefID)
+);

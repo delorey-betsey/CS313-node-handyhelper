@@ -53,14 +53,13 @@
 		<form method ="get" action="/divideRecipe">
 			<button id="divideRecipe">Divide recipe.</button>
 		</form> 		 -->
-		<ul>
+		<!-- <ul>
 			<%
 			recipeRows.forEach( rr => {
 				%>
 				<li>Recipe: <%=rr.title%> <br>  Servings = <%=rr.servings%>    <br>  Recipe Notes: <%=rr.recipenotes%>
 					<br>  Instructions: <%=rr.instructions%><br>
-					<!-- <button id="ingredients" method ="get" action="/displayAllIngredients">See ingredients.</button> 					 -->
-					<button method ="get" action="/displayAllIngredients">See ingredients.</button> 
+					<button id="ingredients">See ingredients.</button> 
 					<button id="double">Double</button>
 					<button id="divide">Divide</button> 
 					<p id="resultsStatus"></p><br>
@@ -68,8 +67,23 @@
 				<%
 				})
 			%>
-		</ul>
+		</ul> -->
 
+		<ul>
+			<%
+			ingredientRows.forEach( rr => {
+				%>
+				<li>Item: <%=rr.item%> <br>  Amount = <%=rr.amount%>  <br>  Measure = <%=rr.measure%>  <br>  Item Notes: <%=rr.itemNotes%>
+					<!-- <br>  Item:       <%=rr.item%><br>
+					<br>  Amount:     <%=rr.amount%><br>
+					<br>  Measure:    <%=rr.measure%><br>
+					<br>  Item Notes: <%=rr.itemNotes%><br> -->
+				</li>
+				<%
+				})
+			%>
+		</ul>
+		
 	</div>
 </body>
 </html>

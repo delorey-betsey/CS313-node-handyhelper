@@ -22,8 +22,22 @@ function createNewUser(req, res) {
     }); 
 };
 
+function createNewRecipe(req, res) {
+    //Create a new recipe  
+    var chefID       = req.body.chefID; 
+    var title        = req.body.title; 
+    var servings     = req.body.servings; 
+    var instructions = req.body.instructions; 
+    var recipeNotes  = req.body.recipeNotes; 
+    console.log("Creating a new recipe");
+
+    userModel.insertNewRecipe(chefID, title, servings, instructions, recipeNotes, function(error, results) {
+        res.json(results);
+    }); 
+};
+
 module.exports = {
     validateUser: validateUser,
-    createNewUser: createNewUser 
-
+    createNewUser: createNewUser,     
+    createNewRecipe: createNewRecipe 
 };

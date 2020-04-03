@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Result</title>
+		<title>Landing</title>
 		<script
 			src="https://code.jquery.com/jquery-3.2.1.min.js"
 			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -12,26 +12,24 @@
 	</head>
 
 	<body>
+		<br>
 		<form action="/">
 			<button id="home">Home</button> 
-		</form>   
-		<button id="login">Login</button>
-		<button id="logout">Logout</button>
-		<p id="loginResults"></p> 
-	<!-- ----------------LANDING PAGE--------------------------- -->
-	<!-- ------------------------------------------- -->
-		<div>
-			<input id="username" type="text" placeholder="username">
-			<input id="password" type="text" placeholder="password">
-			<br><br>
-		</div>
+			<div id="clientResults"></div> 
+		</form> 
+		<br>		
 		<div>
 			<button id="getTimestamp">Get Timestamp</button> 
-			<button id="stayCool">Stay Cool</button>
+			<!-- <button id="stayCool">Stay Cool</button> -->
+			<form action="https://weather.com/weather/tenday/l/789e30ea403dfe3285815bef19260340931c248557a988e96d1eeff46238728a/">
+				<button id="stayCool" type="submit">Stay Cool</button>
+			 </form>
+
 			<button id="beCool">Be Cool</button>
 			<p id="timestampResults"></p>
 		</div>
 		<div id="status"></div>
+		<br>
 		* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 		<br><br> 
 		<form method ="get" action="/displayAllChefs">

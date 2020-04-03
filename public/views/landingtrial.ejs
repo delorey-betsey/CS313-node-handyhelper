@@ -17,7 +17,23 @@
 			<button id="home">Home</button> 
 			<div id="clientResults"></div> 
 		</form> 
-		<br>		
+		<br>
+		
+<!-- ----------------LOGIN VV --------------------------- -->		
+		<form action="#" method="POST" id="logIn">
+			<label for="name ">Name:</label><br>
+			<input type="text" id="name" name="name"><br> 
+			<label for="password ">Password:</label><br>
+			<input type="text" id="password" name="password"><br><br>
+			<input type="button" name="submit_form" id="btn_submit" value="Log In" onclick="submitUser()">
+			<input type="button" name="newPerson_form" id="newPerson_submit" value="Sign Me Up!" onclick="newUser()">  
+		</form> 
+		<br>
+
+<!-- ----------------LOGIN ^^ --------------------------- -->
+
+<!-- if (sessionStorage.getItem('success') == 'true') -->
+<% if (success == 'true'){ %>
 		<div>
 			<button id="getTimestamp">Get Timestamp</button> 
 			<!-- <button id="stayCool">Stay Cool</button> -->
@@ -46,30 +62,23 @@
 	
 		<br>
 		* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-	<div>
-		<!-- <form method ="get" action="/doubleRecipe">
-			<button id="doubleRecipe">Double recipe.</button>
+	<% } else { %>
+		* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+		<br><br> 
+		<form method ="get" action="/displayAllChefs">
+			<button id="displayAllChefs">Display all chefs.</button>
 		</form> 
-		<form method ="get" action="/divideRecipe">
-			<button id="divideRecipe">Divide recipe.</button>
-		</form> 		 -->
-		<ul>
-			<%
-			recipeRows.forEach( rr => {
-				%>
-				<li>Recipe: <%=rr.title%> <br>  Servings = <%=rr.servings%>    <br>  Recipe Notes: <%=rr.recipenotes%>
-					<br>  Instructions: <%=rr.instructions%><br>
-					<!-- <button id="ingredients" method ="get" action="/displayAllIngredients">See ingredients.</button> 					 -->
-					<button method ="get" action="/displayAllIngredients">See ingredients.</button> 
-					<button id="double">Double</button>
-					<button id="divide">Divide</button> 
-					<p id="resultsStatus"></p><br>
-				</li>
-				<%
-				})
-			%>
-		</ul>
-
-	</div>
+		
+		<h1>* Welcome to HANDY HELPER *</h1>
+		<p>Save and share recipes!</p>
+		<p>Divide or double your recipes in a Snap!!</p>   	 
+		
+		<form method ="get" action="/displayAllRecipes">
+			<button id="displayAllRecipes">Display all recipes.</button>
+		</form> 
+	
+		<br>
+		* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+		<% } %>
 </body>
 </html>

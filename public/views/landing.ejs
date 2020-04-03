@@ -1,70 +1,84 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Landing</title>
-		<script
-			src="https://code.jquery.com/jquery-3.2.1.min.js"
-			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-			crossorigin="anonymous">
-		</script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<script src="views/client.js"></script>
-	</head>
-
-	<body>
-		<form action="/">
-			<button id="home">Home</button> 
-		</form>  
+<head>
+	<title>Landing</title>
+	<script
+		src="https://code.jquery.com/jquery-3.2.1.min.js"
+		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+		crossorigin="anonymous">
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="views/client.js"></script>
+</head>
+<body>
+	<br>
+	<form action="/">
+		<button id="home">Home</button> 
+		<div id="clientResults"></div> 
+		<div id="success"></div>
+	</form> 
+	<br>		
 <!-- ----------------LOGIN VV --------------------------- -->		
-		<form action="#" method="POST" id="logIn">
-			<label for="name ">Name:</label><br>
-			<input type="text" id="name" name="name"><br> 
-			<label for="password ">Password:</label><br>
-			<input type="text" id="password" name="password"><br><br>
-			<input type="button" name="submit_form" id="btn_submit" value="Log In" onclick="submitUser()">
-			<input type="button" name="newPerson_form" id="newPerson_submit" value="Sign Me Up!" onclick="newUser()">  
-		</form> 
-		<div id="clientResults"></div>
-
+<form action="#" method="POST" id="logIn">
+	<label for="name ">Name:</label><br>
+	<input type="text" id="name" name="name"><br> 
+	<label for="password ">Password:</label><br>
+	<input type="text" id="password" name="password"><br><br>
+	<input type="button" name="submit_form" id="btn_submit" value="Log In" onclick="submitUser()">
+	<input type="button" name="newPerson_form" id="newPerson_submit" value="Sign Me Up!" onclick="newUser()">  
+</form> 
+<br>
 <!-- ----------------LOGIN ^^ --------------------------- -->
 
+	<div>
+		<button id="getTimestamp">Get Timestamp</button> 
+		<!-- <button id="stayCool">Stay Cool</button> -->
+		<form action="https://weather.com/weather/tenday/l/789e30ea403dfe3285815bef19260340931c248557a988e96d1eeff46238728a/">
+			<button id="stayCool" type="submit">Stay Cool</button>
+			</form>
 
-		<!-- <button id="login">Login</button>
-		<button id="logout">Logout</button>
-		<p id="loginResults"></p> -->
-	<!-- ----------------LANDING PAGE--------------------------- -->
-	<!-- ------------------------------------------- -->
-		<!-- <div>
-			<input id="username" type="text" placeholder="username">
-			<input id="password" type="text" placeholder="password">
-			<br><br>
-		</div>  -->
-		<div>
-			<button id="getTimestamp">Get Timestamp</button> 
-			<!-- <button id="stayCool">Stay Cool</button> -->
-			<form action="https://weather.com/weather/tenday/l/789e30ea403dfe3285815bef19260340931c248557a988e96d1eeff46238728a/">
-				<button id="stayCool" type="submit">Stay Cool</button>
-			 </form>
-
-			<button id="beCool">Be Cool</button>
-			<p id="timestampResults"></p>
-		</div>
-		<div id="status"></div>
-		* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-		<br><br> 
-		<form method ="get" action="/displayAllChefs">
-			<button id="displayAllChefs">Display all chefs.</button>
-		</form> 
-		
-		<h1>* Welcome to HANDY HELPER *</h1>
-		<p>Save and share recipes!</p>
-		<p>Divide or double your recipes in a Snap!!</p>   	 
-		
-		<form method ="get" action="/displayAllRecipes">
-			<button id="displayAllRecipes">Display all recipes.</button>
-		</form> 
+		<button id="beCool">Be Cool</button>
+		<p id="timestampResults"></p>
+	</div>
+	<div id="status"></div>
+	<br>
+	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	<br><br> 
+	<form method ="get" action="/displayAllChefs">
+		<button id="displayAllChefs">Display all chefs.</button>
+	</form> 
 	
-		<br>
-		* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	<h1>* Welcome to HANDY HELPER *</h1>
+	<p>Save and share recipes!</p>
+	<p>Divide or double your recipes in a Snap!!</p>   	 
+	
+	<form method ="get" action="/displayAllRecipes">
+		<button id="displayAllRecipes">Display all recipes.</button>
+	</form> 
+
+	<br>
+	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	<!-- ----------------LOGIN VV --------------------------- -->
+	<!-- <div id="add status"></div>
+
+	<form action="#" method="POST" id="add">
+		<label for="chefID ">Chef ID:</label><br>
+		<input type="text" id="chefID" name="chefID"><br> 
+
+		<label for="title ">Title:</label><br>
+		<input type="text" id="title" name="title"><br>
+
+		<label for="servings ">Servings:</label><br>
+		<input type="text" id="servings" name="servings"><br><br>
+
+		<label for="instructions ">Instructions:</label><br>
+		<input type="text" id="instructions" name="instructions"><br> 
+
+		<label for="recipeNotes ">Recipes Notes:</label><br>
+		<input type="text" id="recipeNotes" name="recipeNotes"><br><br>
+
+		<input type="button" name="newRecipe_form" id="newRecipe_submit" value="Add New Recipe!" onclick="newRecipe()">  
+	</form> 
+	<br> -->
 </body>
 </html>

@@ -25,11 +25,13 @@ const pool = new Pool({connectionString: connectionString,ssl:true});
 
 // -----------------TWO HOMEPAGES (landing and wilson------
   app.get('/', (req, res) => res.render('landing'));
+  //app.get('/landing', (req, res) => res.render('landing'));
   //app.get('/', (req, res) => res.render('wilson'));
 
 //endpoints
   app.get("/logIn", userController.validateUser);
   app.post("/newUser", userController.createNewUser);
+  app.post("/newRecipe", userController.createNewRecipe);
 
 
   //app.get("/cool", (req, res) => res.send(cool()));
@@ -37,7 +39,9 @@ const pool = new Pool({connectionString: connectionString,ssl:true});
   app.get('/processAddRecipe', processAddRecipe);
   
   app.get('/displayAllChefs', displayAllChefs);
-  app.get('/displayAllRecipes', displayAllRecipes);
+  app.get('/displayAllRecipes', displayAllRecipes);  
+  app.get('/displayAllIngredients', displayAllIngredients);
+
   app.get('/divideRecipe', divideRecipe);
   app.get('/doubleRecipe', doubleRecipe);
 
@@ -57,28 +61,6 @@ function processAddRecipe(chefID, title, instructions, servings, rnotes) {
   //$("#addStatus").text("Your recipe has been saved.");
   res.render('addNewRecipe')
   }
-
-// //___________________________________________________________________
-// //_______PROCESS NEW RECIPE FUNCTION_________________________________________
-// function processAddRecipe(chefID, title, instructions, servings, rnotes, callback) {
-//   console.log("Hit process new recipe"); 
-//     var sql = "INSERT INTO recipes(userID, title, instructions, servings, recipenotes) VALUES ($1::text, $2::text, $3::text, $4::text, $5::text,)";
-//     var params = [chefID, title, instructions, servings, rnotes];
-
-//     pool.query(sql, params, function(err, db_results) {
-//       if (err) {
-//           console.log("An error occurred with the DB");
-//           console.log(err);
-//           callback(err, null);
-//       } else {
-//          console.log("Inserted a recipe in DB: ");
-//          console.log(db_results);        
-//         }
-//     });
-//     // successful add callback
-//         $("#addStatus").text("Your recipe has been saved.");
-//         res.render('addNewRecipe');           
-//   };
 
 //________________DISPLAY ALL CHEFS___________________  
 //________________________________________________
@@ -141,7 +123,7 @@ function displayAllRecipes(request, response){
   }
   function getDetailsAllRecipesFromDb(callback) {
     console.log("Getting recipes from DB");
-    var sql = "SELECT recipeID, userID, title, instructions, servings, recipenotes FROM recipes";
+    var sql = "SELECT recipeID, chefID, title, instructions, servings, recipenotes FROM recipes";
 
     pool.query (sql,function(err,result){
       if (err) {
@@ -154,46 +136,43 @@ function displayAllRecipes(request, response){
 	});
 }
 
-//________________DISPLAY INGREDIENTS BY RECIPEID______________  
-//____________________________________________________________
-function displayIngredientsByRecipeID(request, response){
+  // ________________DISPLAY INGREDIENTS BY RECIPEID______________  
+  // ____________________________________________________________
 
-  getIngredientsFromDb(function(error, result) {
-    // This is the callback function that will be called when the DB is done.
-    // The job here is just to send it back.
+  function displayAllIngredients(request, response){
 
-    // Make sure we got a row with the person, then prepare JSON to send back
-    if (error || result == null) {
-      response.status(500).json({success: false, data: error});
-    } else {
-      recipeRows = JSON.stringify(result.rows);
-      response.render('displayAllRecipes',{
-          recipeRows:   recipeRows,
-          ingredientID: ingredientID,
-          recipeID:     recipeID, 
-          item:         item,
-          amount:       amount,	  
-          measure:      measure,				  
-          itemnotes:    itemnotes
+    getIngredientsAllRecipesFromDb(function(error, result) {
+      // This is the callback function that will be called when the DB is done.
+      // The job here is just to send it back.
+  
+      // Make sure we got a row with the person, then prepare JSON to send back
+      if (error || result == null) {
+        response.status(500).json({success: false, data: error});
+      } else {
+        ingredientRows = result.rows;  
+        response.render('displayAllIngredients',{
+          ingredientRows: ingredientRows
+          // userid:    userID,
+          // firstName: firstName, 
+          // lastName:  lastName           
         });
-    }
-  });
-}
-function getIngredientsFromDb(callback) {
-  console.log("Getting recipes from DB");
-  var sql = "SELECT recipeID, userID, title, instructions, servings, recipenotes FROM recipes";
+      }
+    });
+  }
+  function getIngredientsAllRecipesFromDb(callback) {
+    console.log("Getting ingredients from DB");
+    var sql = "SELECT item, amount, measure, itemNotes FROM ingredients";
 
-  pool.query (sql,function(err,result){
-    if (err) {
-      console.log("Error with select recipes database occurred. ")
-      console.log(err);
-      callback(err, null);
-    } 	// Log this to the console for debugging purposes.
-  console.log("Found result: " + JSON.stringify(result.rows));
-  callback(null, result);
-});
+    pool.query (sql,function(err,result){
+      if (err) {
+        console.log("Error with select recipes database occurred. ")
+        console.log(err);
+        callback(err, null);
+      } 	// Log this to the console for debugging purposes.
+		console.log("Found result: " + JSON.stringify(result.rows));
+		callback(null, result);
+	});
 }
-
 //___________________________________________________________________
 //_______DIVIDE RECIPE FUNCTION_________________________________________
 function divideRecipe(req, res) {
