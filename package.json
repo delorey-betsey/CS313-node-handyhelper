@@ -21,6 +21,14 @@
     "express-session": "^1.17.0",
     "pg": "^6.4.2"
   },
+  "devDependencies": {
+    "aws-sdk": "2.x"
+  },
+  "binary": {
+      "module_name": "your_module",
+      "module_path": "./lib/binding/",
+      "host": "https://your_module.s3-us-west-1.amazonaws.com"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/heroku/node-js-getting-started.git"
@@ -33,12 +41,6 @@
   "license": "MIT",
   "bugs": {},
   "homepage": " ",
-  "author": "betsey delorey",
-"devDependencies": {
-  "aws-sdk": "2.x"
-},
-"binary": {
-    "module_name": "your_module",
-    "module_path": "./lib/binding/",
-    "host": "https://your_module.s3-us-west-1.amazonaws.com"
+  "author": "betsey delorey"
 }
+
