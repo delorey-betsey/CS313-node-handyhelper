@@ -3,8 +3,8 @@ const { Pool } = require("pg");
 const connectionString = process.env.DATABASE_URL;
 const pool = new Pool({connectionString: connectionString});
 
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+//const bcrypt = require('bcrypt');
+//const saltRounds = 10;
 
 function searchForUser(userName, userPassword, callback) {
     //validate a user and password
@@ -18,36 +18,37 @@ function searchForUser(userName, userPassword, callback) {
             console.log("An error occurred with the DB");
             console.log(err);
             callback(err, null);
-        }else {
+        } else {
              console.log(db_results);
-             var enteredPassword = userPassword;
-             var hash = db_results.rows[0].password;
+            //  var enteredPassword = userPassword;
+            //  var hash = db_results.rows[0].password;
              
-            bcrypt.compare(enteredPassword, hash, function(err, result) {
-                if (err) {
-                    console.log("An error occurred with password compare");
-                    console.log(err);
-                    callback(err, null);
-                }else {
-                    if (result == true) {
-                    var results = {user: userName, success: true};
-                    console.log("model login:" + results)
-                    callback(null,results);
-                    }else{
-                        results = {success: false};
-                        callback(err, results);
-                        //TODO: send back to home page with an error message in <div id="addResults">
-                    }
-                } 
-             }) 
-        };
+            // bcrypt.compare(enteredPassword, hash, function(err, result) {
+            //     if (err) {
+            //         console.log("An error occurred with password compare");
+            //         console.log(err);
+            //         callback(err, null);
+            //     }else {
+            //         if (result == true) {
+            var results = {user: userName, success: true};
+            console.log("model login:" + results)
+            callback(null,results);
+            }
+            // else{
+            //     results = {success: false};
+            //     callback(err, results);
+            //     //TODO: send back to home page with an error message in <div id="addResults">
+            // }
+        //} 
+        //}) 
+    //     };
     });
-};   
+});   
 
 function insertNewUser(userName, password, callback) {
     //Create a new user and password
     var enteredPassword = password;
-    bcrypt.hash(enteredPassword, saltRounds, function(err, hash) {
+    //bcrypt.hash(enteredPassword, saltRounds, function(err, hash) {
         var sql = "INSERT INTO security(username, password) VALUES ($1::text,$2::text)";
         var params = [userName, hash]; 
 
@@ -63,7 +64,7 @@ function insertNewUser(userName, password, callback) {
         //callback(null, db_results);
         //callback (null, results); // returns results to userController.createNewUser()  
         });
-    });
+    //});
     //var results = {user:[{userName: "Cat Cravens", password: "catWORD"}]};
     var results = {user:userName, success: true};
     console.log("model new user:" + results)
