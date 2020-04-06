@@ -11,10 +11,10 @@ function submitUser() {
          console.log("Back from server with user data:");
          console.log(data);
          var success = 1;
+         $("#clientResults").empty();
+         $("#success").empty();
          $("#clientResults").append("Welcome " + userName + "!");         
-         $("#success").append("success value =  " + success + "!");
-
-         
+         $("#success").append("success value =  " + success + "!");        
 
          sessionStorage.setItem("userName", userName); 
          sessionStorage.setItem("success", success);
@@ -38,6 +38,8 @@ function newUser() {
     console.log("Name: " + userName + " and password: " + userPassword);
  
     $.post("/newUser", {userName: userName, userPassword: userPassword},function(data){
+        $("#clientResults").empty();
+        $("#success").empty();
         $("#clientResults").append("Welcome " + userName + "!");
         $("#success").append("success value =  " + success + "!");
         console.log(data);
@@ -69,6 +71,7 @@ function newRecipe() {
  
     $.post("/newRecipe", {chefID:chefID, title:title, servings:servings, instructions:instructions, recipeNotes:recipeNotes},function(data){
         //$("#clientResults").append("Welcome " + userName + "!");
+        $("#addStatus").empty();
         $("#addStatus").append("Success!  " + title + " recipe has been saved.");
         console.log(data);
     });
@@ -108,123 +111,3 @@ $(document).ready(function(){
 		})
 });
 
-//<!-- ----------------SEARCH ALL CHEFS--------------------------- -->
-//<!-- ------------------------------------------- -->
-// $(document).ready(function(){
-//     $("#displayAllChefs"(chefRows)){
-//         var id        = $('input[name=id]').val();
-//         var firstName = $('input[name=firstName]').val();   
-//         var lastName  = $('input[name=lastName]').val();          
-
-//         $.ajax({
-//             type: 'post',
-//             url: '/ajax',
-//             chefRows: chefRows {
-//                 id:        id,
-//                 firstName: firstName,
-//                 lastName:  lastName
-//             },
-//             dataType: 'text'
-//         })
-//         .done(function(chefRows){
-//             $('h1').html(data.quote);
-//         });
-//     });
-// });
-//<!-- ----------------SEARCH ALL RECIPES--------------------------- -->
-//<!-- ------------------------------------------- -->
-// $(document).ready(function(){
-//     $("#displayAllChefs"(chefRows)){
-//         var recipeID      = $('input[name=recipeID]').val();
-//         var userID        = $('input[name=userID]').val();   
-// 		   var instructions  = $('input[name=instructions]').val();
-// 		   var servings      = $('input[name=servings]').val();		  
-//         var recipenotes   = $('input[name=recipeNotes]').val();           
-
-//         $.ajax({
-//             type: 'post',
-//             url: '/ajax',
-//             chefRows: chefRows {
-//                 id:        id,
-// 				firstName: firstName,
-// 				firstName: firstName,
-//                 lastName:  lastName
-//             },
-//             dataType: 'text'
-//         })
-//         .done(function(chefRows){
-//             $('h1').html(data.quote);
-//         });
-//     });
-// });
-
-// //<!-- ----------------SEARCH ALL INGREDIENTS BY RECIPEID--------------------------- -->
-// //<!-- ------------------------------------------- -->
-//     $(document).ready(function(){
-//         $("#displayAllIngredients"(ingredientRows)){
-//     //         var ingredientID = $('input[name=ingredientID]').val();
-//     //         var recipeID     = $('input[name=recipeID]').val();   
-//     // 		   var item         = $('input[name=item]').val();
-//     // 		   var amount       = $('input[name=amount]').val();		  
-//     // 		   var measure      = $('input[name=measure]').val();				  
-//     //         var itemnotes    = $('input[name=itemnotes]').val();           
-
-//             $.ajax({
-//                 type: 'get',
-//                 url: '/displayAllIngredients',
-//                 ingredientRows: ingredientRows {
-//     // 				ingredientID :ingredientID,
-//     // 				recipeID     :recipeID, 
-//                     item         :item,
-//                     amount       :amount,	  
-//                     measure      :measure,				  
-//                     itemnotes    :itemnotes
-//                 },
-//                 dataType: 'text',          
-//                 success: (function(ingredientRows){
-//                     console.log('success', ingredientRows)
-//                 });
-//             });
-//         });
-//     });
-// <!-- ----------------LOGOUT--------------------------- -->
-// <!-- ------------------------------------------- -->
-
-// $(document).ready(function(){
-// 	$("#logout").click(function () {
-// 		console.log("Hit logout");
-// 		$('#loginResults').text("Successfully logged out.");
-// 		})
-// });
-
-// <!-- ----------------PROCESS ADD RECIPE FUNCTION--------------------------- -->
-// <!-- ------------------------------------------- -->
-
-// $(document).ready(function(){
-// 	$("#processAddRecipe").click(function () {
-// 		console.log("Hit process add recipe");
-	 	  
-// 		$("#addStatus").text("successful add message here");
-// 		})
-// });
-
-// <!-- ----------------INGREDIENTS FUNCTION--------------------------- -->
-// <!-- ------------------------------------------- -->
-
-// $(document).ready(function(){
-// 	$("#ingredients").click(function () {
-// 		console.log("Hit ingredients");
-	 	  
-// 		$("#resultsStatus").text("need ingredients here");
-// 		})
-// });
-//<!-- ----------------ADD NEW RECIPE--------------------------- -->
-//<!-- ------------------------------------------- -->
-
-
-//<!-- ----------------DIVIDE RECIPE--------------------------- -->
-//<!-- ------------------------------------------- -->
-
-
-//<!-- ----------------DOUBLE RECIPE--------------------------- -->
-//<!-- ------------------------------------------- -->
