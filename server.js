@@ -40,7 +40,7 @@ const pool = new Pool({connectionString: connectionString,ssl:true});
   
   app.get('/displayAllChefs', displayAllChefs);
   app.get('/displayAllRecipes', displayAllRecipes);  
-  app.get('/displayAllIngredients', displayAllIngredients);
+  app.get('/displayIngredients', displayIngredients);
 
   app.get('/divideRecipe', divideRecipe);
   app.get('/doubleRecipe', doubleRecipe);
@@ -67,10 +67,7 @@ function processAddRecipe(chefID, title, instructions, servings, rnotes) {
 function displayAllChefs(request, response){
 
     getAllChefsFromDb(function(error, result) {
-      // This is the callback function that will be called when the DB is done.
-      // The job here is just to send it back.
-  
-      // Make sure we got a row with the person, then prepare JSON to send back
+
       if (error || result == null) {
         response.status(500).json({success: false, data: error});
       } else {
@@ -138,41 +135,11 @@ function displayAllRecipes(request, response){
 
   // ________________DISPLAY INGREDIENTS BY RECIPEID______________  
   // ____________________________________________________________
+  function displayIngredients(req, res) {
+    console.log("Hit divide recipe");
+    res.render('divideRecipe')
+    }
 
-  function displayAllIngredients(request, response){
-
-    getIngredientsAllRecipesFromDb(function(error, result) {
-      // This is the callback function that will be called when the DB is done.
-      // The job here is just to send it back.
-  
-      // Make sure we got a row with the person, then prepare JSON to send back
-      if (error || result == null) {
-        response.status(500).json({success: false, data: error});
-      } else {
-        ingredientRows = result.rows;  
-        response.render('displayAllIngredients',{
-          ingredientRows: ingredientRows
-          // userid:    userID,
-          // firstName: firstName, 
-          // lastName:  lastName           
-        });
-      }
-    });
-  }
-  function getIngredientsAllRecipesFromDb(callback) {
-    console.log("Getting ingredients from DB");
-    var sql = "SELECT item, amount, measure, itemNotes FROM ingredients";
-
-    pool.query (sql,function(err,result){
-      if (err) {
-        console.log("Error with select recipes database occurred. ")
-        console.log(err);
-        callback(err, null);
-      } 	// Log this to the console for debugging purposes.
-		console.log("Found result: " + JSON.stringify(result.rows));
-		callback(null, result);
-	});
-}
 //___________________________________________________________________
 //_______DIVIDE RECIPE FUNCTION_________________________________________
 function divideRecipe(req, res) {
