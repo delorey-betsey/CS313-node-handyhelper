@@ -47,10 +47,10 @@ function searchForUser(userName, userPassword, callback) {
 
 function insertNewUser(userName, password, callback) {
     //Create a new user and password
-    var enteredPassword = password;
+    //var enteredPassword = password;
     //bcrypt.hash(enteredPassword, saltRounds, function(err, hash) {
         var sql = "INSERT INTO security(username, password) VALUES ($1::text,$2::text)";
-        var params = [userName, hash]; 
+        var params = [userName, password]; 
 
         pool.query(sql, params, function(err, db_results) {
             if (err) {
