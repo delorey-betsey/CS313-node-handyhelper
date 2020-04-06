@@ -5,7 +5,6 @@ const app = express();
 const path = require('path')
 const bodyParser = require('body-parser');
 
-const collectionController = require("./controllers/collectionController.js");
 const userController = require("./controllers/userController.js");
 
 const PORT = process.env.PORT || 5000
