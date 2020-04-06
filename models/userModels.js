@@ -43,7 +43,7 @@ function searchForUser(userName, userPassword, callback) {
         //}) 
     //     };
     });
-});   
+};   
 
 function insertNewUser(userName, password, callback) {
     //Create a new user and password
