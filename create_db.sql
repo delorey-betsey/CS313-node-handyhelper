@@ -111,3 +111,23 @@ ADD FOREIGN KEY (group_id) REFERENCES supplier_groups (ID);
 CREATE TABLE recipes (
    FOREIGN KEY (chefID) REFERENCES chefs(chefID)
 );
+
+ALTER TABLE chefs
+ADD COLUMN userName text;
+
+UPDATE chefs  
+WHERE userName = 'bdelorey'  
+WHERE chefID = 1;
+UPDATE chefs  
+SET userName = 'ochristensen'  
+WHERE chefID = 2;
+UPDATE chefs  
+SET userName = 'menamorado'  
+WHERE chefID = 3;
+
+INSERT INTO security(userName,password) VALUES ('bdelorey', 'pass1');
+INSERT INTO security(userName,password) VALUES ('ochristensen', 'pass1');
+INSERT INTO security(userName,password) VALUES ('menamorado', 'pass1');
+
+ALTER TABLE ingredients
+ALTER COLUMN amount TYPE int;

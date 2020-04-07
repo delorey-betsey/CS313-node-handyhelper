@@ -2,7 +2,7 @@
 
 function submitUser() {
     console.log("Verifying user");
-    var userName = $("#name").val();
+    var userName = $("#userName").val();
     var userPassword = $("#password").val();
 
     console.log("Name: " + userName + " and password: " + userPassword + "and success: " + success);
@@ -13,8 +13,12 @@ function submitUser() {
          var success = 1;
          $("#clientResults").empty();
          $("#success").empty();
+         $("#userName").empty();
+         $("#password").empty();
+         $("#firstName").empty();
+         $("#lastName").empty();
          $("#clientResults").append("Welcome " + userName + "!");         
-         $("#success").append("success value =  " + success + "!");        
+         //$("#success").append("success value =  " + success + "!");        
 
          sessionStorage.setItem("userName", userName); 
          sessionStorage.setItem("success", success);
@@ -26,22 +30,29 @@ function submitUser() {
 
 function newUser() {
     //need userName and userPassword
-    var userName = $("#name").val();
-    var userPassword = $("#password").val();
+    var userName = $("#userName").val();
+    var password = $("#password").val();
+    var firstName = $("#firstName").val();
+    var lastName = $("#lastName").val();
    
-    console.log("Name: " + userName + " and password: " + userPassword + "and success: " + success);
+    console.log("Name: " + userName + " and password: " + password + "and success: " + success);
     var success = 1;
     sessionStorage.setItem("userName", userName);
+    sessionStorage.setItem("firstName", firstName);
+    sessionStorage.setItem("lastName", lastName);
     sessionStorage.setItem("success", success);
-    var success = 1;
-
-    console.log("Name: " + userName + " and password: " + userPassword);
+    
+    console.log("Name: " + userName + " and password: " + password);
  
-    $.post("/newUser", {userName: userName, userPassword: userPassword},function(data){
+    $.post("/newUser", {userName: userName, password: password, firstName: firstName, lastName: lastName},function(data){
         $("#clientResults").empty();
         $("#success").empty();
-        $("#clientResults").append("Welcome " + userName + "!");
-        $("#success").append("success value =  " + success + "!");
+        $("#userName").empty();
+        $("#password").empty();
+        $("#firstName").empty();
+        $("#lastName").empty();
+        $("#clientResults").append("Welcome " + firstName +" "+ lastName + "!");
+        //$("#success").append("success value =  " + success + "!");
         console.log(data);
     });
 }
@@ -89,25 +100,25 @@ $(document).ready(function(){
 		})
 });
 
-// <!-- ----------------DOUBLE FUNCTION--------------------------- -->
-// <!-- ------------------------------------------- -->
+// // <!-- ----------------DOUBLE FUNCTION--------------------------- -->
+// // <!-- ------------------------------------------- -->
 
-$(document).ready(function(){
-	$("#double").click(function () {
-		console.log("Hit double");
+// $(document).ready(function(){
+// 	$("#double").click(function () {
+// 		console.log("Hit double");
 	 	  
-		$("#resultsStatus").text("double ingredients here");
-		})
-});
+// 		$("#resultsStatus").text("double ingredients here");
+// 		})
+// });
 
-// <!-- ----------------DIVIDE FUNCTION--------------------------- -->
-// <!-- ------------------------------------------- -->
+// // <!-- ----------------DIVIDE FUNCTION--------------------------- -->
+// // <!-- ------------------------------------------- -->
 
-$(document).ready(function(){
-	$("#divide").click(function () {
-		console.log("Hit divide");
+// $(document).ready(function(){
+// 	$("#divide").click(function () {
+// 		console.log("Hit divide");
 	 	  
-		$("#resultsStatus").text("divide ingredients here");
-		})
-});
+// 		$("#resultsStatus").text("divide ingredients here");
+// 		})
+// });
 

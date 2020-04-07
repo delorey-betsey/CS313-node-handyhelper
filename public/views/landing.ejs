@@ -20,22 +20,32 @@
 	<br>		
 <!-- ----------------LOGIN VV --------------------------- -->		
 <form action="#" method="POST" id="logIn">
-	<label for="name ">Name:</label><br>
-	<input type="text" id="name" name="name"><br> 
-	<label for="password ">Password:</label><br>
-	<input type="text" id="password" name="password"><br><br>
-	<input type="button" name="submit_form" id="btn_submit" value="Log In" onclick="submitUser()">
-	<input type="button" name="newPerson_form" id="newPerson_submit" value="Sign Me Up!" onclick="newUser()">  
+
+	<input type="button" name="submit_form" id="btn_submit" value="Log In" onclick="submitUser()">	
+	(fill 1-2 only)
+	<br><br>
+	1. <input type="text" id="userName" name="userName" placeholder="username">	
+	<br>
+	2. <input type="text" id="password" name="password" placeholder="password">
+	<br><br>
+	3. <input type="text" id="firstName" name="firstName" placeholder="First Name">
+	<br>
+	4. <input type="text" id="lastName" name="lastName" placeholder="Last Name">
+	<br><br>
+	<input type="button" name="newPerson_form" id="newPerson_submit" value="Sign Me Up!" onclick="newUser()">
+	(fill 1-4)
+	<br>
+	  
 </form> 
 <br>
 <!-- ----------------LOGIN ^^ --------------------------- -->
 
 	<div>
 		<button id="getTimestamp">Get Timestamp</button> 
-		<!-- <button id="stayCool">Stay Cool</button> -->
+		 
 		<form action="https://weather.com/weather/tenday/l/789e30ea403dfe3285815bef19260340931c248557a988e96d1eeff46238728a/">
 			<button id="stayCool" type="submit">Stay Cool</button>
-			</form>
+		</form>
 
 		<button id="beCool">Be Cool</button>
 		<p id="timestampResults"></p>

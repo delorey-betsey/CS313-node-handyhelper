@@ -11,79 +11,62 @@
 		<script src="views/client.js"></script>
 	</head>
 
-	<body>
-		<br>
-		<form action="/">
-			<button id="home">Home</button> 
-			<div id="clientResults"></div> 
-		</form> 
-		<br>		
-		<div>
-			<button id="getTimestamp">Get Timestamp</button> 
-			<!-- <button id="stayCool">Stay Cool</button> -->
-			<form action="https://weather.com/weather/tenday/l/789e30ea403dfe3285815bef19260340931c248557a988e96d1eeff46238728a/">
-				<button id="stayCool" type="submit">Stay Cool</button>
-			 </form>
-
-			<button id="beCool">Be Cool</button>
-			<p id="timestampResults"></p>
-		</div>
-		<div id="status"></div>
-		<br>
-		* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-		<br><br> 
-		<form method ="get" action="/displayAllChefs">
-			<button id="displayAllChefs">Display all chefs.</button>
-		</form> 
-		
-		<h1>* Welcome to HANDY HELPER *</h1>
-		<p>Save and share recipes!</p>
-		<p>Divide or double your recipes in a Snap!!</p>   	 
-		
-		<form method ="get" action="/displayAllRecipes">
-			<button id="displayAllRecipes">Display all recipes.</button>
-		</form> 
-	
-		<br>
-		* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+<body>
+	<br>
+	<form action="/">
+		<button id="home">Home</button> 
+		<div id="clientResults"></div> 
+	</form> 
+	<br>		
 	<div>
-		<!-- <form method ="get" action="/doubleRecipe">
-			<button id="doubleRecipe">Double recipe.</button>
-		</form> 
-		<form method ="get" action="/divideRecipe">
-			<button id="divideRecipe">Divide recipe.</button>
-		</form> 		 -->
-		<!-- <ul>
-			<%
-			recipeRows.forEach( rr => {
-				%>
-				<li>Recipe: <%=rr.title%> <br>  Servings = <%=rr.servings%>    <br>  Recipe Notes: <%=rr.recipenotes%>
-					<br>  Instructions: <%=rr.instructions%><br>
-					<button id="ingredients">See ingredients.</button> 
-					<button id="double">Double</button>
-					<button id="divide">Divide</button> 
-					<p id="resultsStatus"></p><br>
-				</li>
-				<%
-				})
-			%>
-		</ul> -->
+		<button id="getTimestamp">Get Timestamp</button> 
+		<!-- <button id="stayCool">Stay Cool</button> -->
+		<form action="https://weather.com/weather/tenday/l/789e30ea403dfe3285815bef19260340931c248557a988e96d1eeff46238728a/">
+			<button id="stayCool" type="submit">Stay Cool</button>
+			</form>
 
+		<button id="beCool">Be Cool</button>
+		<p id="timestampResults"></p>
+	</div>
+	<div id="status"></div>
+	<br>
+	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	<br><br> 
+	<form method ="get" action="/displayAllChefs">
+		<button id="displayAllChefs">Display all chefs.</button>
+	</form> 
+	
+	<h1>* Welcome to HANDY HELPER *</h1>
+	<p>Save and share recipes!</p>
+	<p>Divide or double your recipes in a Snap!!</p>   	 
+	
+	<form method ="get" action="/displayAllRecipes">
+		<button id="displayAllRecipes">Display all recipes.</button>
+	</form> 
+
+	<br>
+	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	<div id="recipeHeader"></div>
+	<div>
 		<ul>
 			<%
-			ingredientRows.forEach( rr => {
+			ingredientsRows.forEach( rr => {
 				%>
-				<li>Item: <%=rr.item%> <br>  Amount = <%=rr.amount%>  <br>  Measure = <%=rr.measure%>  <br>  Item Notes: <%=rr.itemNotes%>
-					<!-- <br>  Item:       <%=rr.item%><br>
-					<br>  Amount:     <%=rr.amount%><br>
-					<br>  Measure:    <%=rr.measure%><br>
-					<br>  Item Notes: <%=rr.itemNotes%><br> -->
+				<li><%=rr.recipeID%>  <%=rr.amount%>  <%=rr.measure%>  <%=rr.item%>  <%=rr.itemNotes%>
 				</li>
 				<%
 				})
 			%>
-		</ul>
-		
+		</ul>		
 	</div>
+
+	<!-- <form method ="get" action="#">
+		<button id="divide">Divide</button>
+	</form> 
+	<form method ="get" action="#">
+		<button id="double">Double</button>
+	</form> 
+	<div id="mathResults"></div> -->
+
 </body>
 </html>

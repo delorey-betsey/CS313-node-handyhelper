@@ -45,7 +45,8 @@ function searchForUser(userName, userPassword, callback) {
     });
 };   
 
-function insertNewUser(userName, password, callback) {
+function insertToSecurity(userName, password, firstName, lastName, callback) {
+    console.log("hit insert to security");
     //Create a new user and password
     //var enteredPassword = password;
     //bcrypt.hash(enteredPassword, saltRounds, function(err, hash) {
@@ -57,19 +58,105 @@ function insertNewUser(userName, password, callback) {
                 console.log("An error occurred with the DB");
                 console.log(err);
                 callback(err, null);
-            }else {
-                console.log("New User: " + userName + " inserted into DB");
+            } else {
+                console.log("New User: " + userName + " inserted into DB security");
                 console.log(db_results);
+                var results = {userName:userName, firstName:firstName, lastName:lastName, success: true};
+                console.log("model new user:" + results)
+                callback(null, results); 
             };
         //callback(null, db_results);
         //callback (null, results); // returns results to userController.createNewUser()  
         });
     //});
     //var results = {user:[{userName: "Cat Cravens", password: "catWORD"}]};
-    var results = {user:userName, success: true};
-    console.log("model new user:" + results)
-    callback(null, results); 
 };
+
+function insertToChefs(userName, firstName, lastName, callback) {
+    console.log("hit insert to chefs");    
+    console.log(userName, firstName, lastName);
+    //Create a new user and password
+    //var enteredPassword = password;
+    //bcrypt.hash(enteredPassword, saltRounds, function(err, hash) {
+        var sql = "INSERT INTO chefs(userName, firstName, lastName) VALUES ($1::text,$2::text,$3::text)";
+        var params = [userName, firstName, lastName]; 
+
+        pool.query(sql, params, function(err, db_results) {
+            if (err) {
+                console.log("An error occurred with the insert to chefsDB");
+                console.log(err);
+                callback(err, null);
+            } else {
+                console.log("New User: " + userName + " inserted into DB chefs");
+                console.log(db_results);
+                var db_results = {userName:userName, firstName:firstName, lastName:lastName, success: true};
+                console.log("model new user:" + db_results)
+                callback(null, db_results); 
+            };
+        //callback(null, db_results);
+        //callback (null, results); // returns results to userController.createNewUser()  
+        });
+    //});
+    //var results = {user:[{userName: "Cat Cravens", password: "catWORD"}]};
+};
+
+function getAllChefsFromDb(callback) {
+    console.log("Getting chefs from DB");
+    var sql = "SELECT * FROM chefs";
+
+    pool.query (sql,function(err,result){
+      if (err) {
+        console.log("Error with select chefs database occurred. ")
+        console.log(err);
+        callback(err, null);
+      } 	// Log this to the console for debugging purposes.
+		console.log("Found result: " + JSON.stringify(result.rows));
+		callback(null, result);
+	});
+} 
+function getRecipesFromDB(callback) {
+    console.log("Getting recipes from DB");
+    var sql = "SELECT recipeID, chefID, title, instructions, servings, recipenotes FROM recipes";
+
+    pool.query (sql,function(err,result){
+      if (err) {
+        console.log("Error with select recipes database occurred. ")
+        console.log(err);
+        callback(err, null);
+      } 	// Log this to the console for debugging purposes.
+		console.log("Found result: " + JSON.stringify(result.rows));
+		callback(null, result);
+	});
+}
+function getHeaderFromDB(callback) {
+    console.log("Getting recipe header from DB");
+    var sql = "SELECT recipeID, chefID, title, instructions, servings, recipenotes FROM recipes";
+
+    pool.query (sql,function(err,result){
+      if (err) {
+        console.log("Error with select recipes database occurred. ")
+        console.log(err);
+        callback(err, null);
+      } 	// Log this to the console for debugging purposes.
+		console.log("Found result: " + JSON.stringify(result.rows));
+		callback(null, result);
+	});
+}
+function getIngredientsFromDB(callback) {
+    console.log("Getting ingredients from DB");
+    var sql = "SELECT ingredientID, recipeID, item, amount, measure, itemNotes FROM ingredients WHERE recipeID = 200";
+
+    pool.query (sql,function(err,result){
+      if (err) {
+        console.log("Error on select ingredients occurred. ")
+        console.log(err);
+        callback(err, null);
+      } 	// Log this to the console for debugging purposes.
+        console.log("Found result: " + JSON.stringify(result.rows));
+        callback(null, result);
+
+	});
+}
 
 function insertNewRecipe(chefID, title, servings, instructions, recipeNotes, callback) {
     //Create a new user and password
@@ -100,7 +187,12 @@ function insertNewRecipe(chefID, title, servings, instructions, recipeNotes, cal
 
 module.exports = {
     searchForUser: searchForUser,
-    insertNewUser: insertNewUser,
+    insertToSecurity: insertToSecurity,
+    getAllChefsFromDb: getAllChefsFromDb,
+    getRecipesFromDB: getRecipesFromDB,
+    getHeaderFromDB: getHeaderFromDB,
+    getIngredientsFromDB: getIngredientsFromDB,
+    insertToChefs: insertToChefs,
     insertNewRecipe: insertNewRecipe
 };
 
