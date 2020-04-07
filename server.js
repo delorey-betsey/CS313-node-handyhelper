@@ -26,6 +26,7 @@ const pool = new Pool({connectionString: connectionString,ssl:true});
   app.get('/', (req, res) => res.render('landing'));
   //app.get('/landing', (req, res) => res.render('landing'));
   app.get('/wilson', (req, res) => res.render('wilson'));
+  app.get("/cool", (req, res) => res.send(cool()));
 
 //endpoints
   app.get("/logIn", userController.validateUser);
