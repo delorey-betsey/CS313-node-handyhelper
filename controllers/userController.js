@@ -2,8 +2,8 @@ const userModel = require("../models/userModels");
 
 function validateUser(req, res) {
     //validate a user and password
-    var userName = req.query.userName; //comes from query
-    var userPassword = req.query.password; // comes from query
+    var userName = req.query.userName; 
+    var userPassword = req.query.password; 
     console.log("Validating an owner with name and password " + userName + " " + userPassword);
 
     userModel.searchForUser(userName, userPassword, function(error, results){
@@ -13,10 +13,10 @@ function validateUser(req, res) {
 
 function createNewUser(req, res) {
     //Create a new user and password
-    var userName  = req.body.userName; //comes from post body
-    var password  = req.body.password; // comes from post body
-    var firstName = req.body.firstName; //comes from post body
-    var lastName  = req.body.lastName; //comes from post body
+    var userName  = req.body.userName; 
+    var password  = req.body.password; 
+    var firstName = req.body.firstName; 
+    var lastName  = req.body.lastName; 
     console.log("Creating a new owner");
 
     userModel.insertToSecurity(userName, password, firstName, lastName, function(error, results) {
@@ -37,10 +37,7 @@ function displayAllChefs(request, response){
       } else {
           chefRows = result.rows;  
           response.render('displayAllChefs',{
-            chefRows: chefRows
-            // userid:    userID,
-            // firstName: firstName, 
-            // lastName:  lastName           
+            chefRows: chefRows      
           });
         }
     });
@@ -50,19 +47,12 @@ function displayAllChefs(request, response){
 function displayAllRecipes(request, response){
 
     userModel.getRecipesFromDB(function(error, result) {
-      // This is the callback function that will be called when the DB is done.
-      // The job here is just to send it back.
-  
-      // Make sure we got a row with the person, then prepare JSON to send back
       if (error || result == null) {
         response.status(500).json({success: false, data: error});
       } else {
         recipeRows = result.rows;  
         response.render('displayAllRecipes',{
-          recipeRows: recipeRows
-          // userid:    userID,
-          // firstName: firstName, 
-          // lastName:  lastName           
+          recipeRows: recipeRows    
         });
       }
     });
@@ -71,19 +61,12 @@ function displayAllRecipes(request, response){
   function displayRecipeHeader(request, response){
 
     userModel.getHeaderFromDB(function(error, result) {
-      // This is the callback function that will be called when the DB is done.
-      // The job here is just to send it back.
-  
-      // Make sure we got a row with the person, then prepare JSON to send back
       if (error || result == null) {
         response.status(500).json({success: false, data: error});
       } else {
         headerRow = result.rows;  
         response.render('displayIngredients',{
-        headerRow: headerRow
-          // userid:    userID,
-          // firstName: firstName, 
-          // lastName:  lastName           
+        headerRow: headerRow      
         });
       }
     });
@@ -93,10 +76,6 @@ function displayAllRecipes(request, response){
 function displayIngredients(request, response){
 
     userModel.getIngredientsFromDB(function(error, result) {
-      // This is the callback function that will be called when the DB is done.
-      // The job here is just to send it back.
-  
-      // Make sure we got a row with the person, then prepare JSON to send back
       if (error || result == null) {
         response.status(500).json({success: false, data: error});
       } else {

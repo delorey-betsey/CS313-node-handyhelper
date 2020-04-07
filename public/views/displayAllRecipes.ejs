@@ -45,33 +45,22 @@
 		<br>
 		* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	<div>
-		<!-- <form method ="get" action="/doubleRecipe">
-			<button id="doubleRecipe">Double recipe.</button>
-		</form> 
-		<form method ="get" action="/divideRecipe">
-			<button id="divideRecipe">Divide recipe.</button>
-		</form> 		 -->
 		<ul>
 			<%
 			recipeRows.forEach( rr => {
 				%>
 				<li>Recipe ID: <%=rr.recipeid%> <br>Recipe: <%=rr.title%> <br>  Servings = <%=rr.servings%>    <br>  Recipe Notes: <%=rr.recipenotes%>
 					<br>  Instructions: <%=rr.instructions%><br>
-					<!-- <button id="ingredients" method ="get" action="/displayAllIngredients">See ingredients.</button> 					 -->
+				
 					<form method ="get" action="/displayIngredients">
 						<button id="displayIngredients">See Ingredients</button>
 					</form> 
 					<br>
-					<!-- <button id="double">Double</button>
-					<button id="divide">Divide</button>  -->
-					<!-- <p id="resultsStatus"></p><br>
-					<div id="ingredients"></div> -->
 				</li>
 				<%
 				})
 			%>
 		</ul>
-
 	</div>
 </body>
 </html>

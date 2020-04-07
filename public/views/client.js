@@ -18,7 +18,6 @@ function submitUser() {
          $("#firstName").empty();
          $("#lastName").empty();
          $("#clientResults").append("Welcome " + userName + "!");         
-         //$("#success").append("success value =  " + success + "!");        
 
          sessionStorage.setItem("userName", userName); 
          sessionStorage.setItem("success", success);
@@ -52,7 +51,6 @@ function newUser() {
         $("#firstName").empty();
         $("#lastName").empty();
         $("#clientResults").append("Welcome " + firstName +" "+ lastName + "!");
-        //$("#success").append("success value =  " + success + "!");
         console.log(data);
     });
 }
@@ -60,7 +58,6 @@ function newUser() {
 //__________NEW RECIPE___________________________
 
 function newRecipe() {
-    //need title, servings, instructions, recipe notes
     var chefID       = $("#chefID").val();
     var title        = $("#title").val();
     var servings     = $("#servings").val();
@@ -81,7 +78,6 @@ function newRecipe() {
     console.log("chefID: " + chefID + "title: " + title + " and servings: " + servings + "and instructions: " + instructions + "and recipeNotes: " + recipeNotes);
  
     $.post("/newRecipe", {chefID:chefID, title:title, servings:servings, instructions:instructions, recipeNotes:recipeNotes},function(data){
-        //$("#clientResults").append("Welcome " + userName + "!");
         $("#addStatus").empty();
         $("#addStatus").append("Success!  " + title + " recipe has been saved.");
         console.log(data);

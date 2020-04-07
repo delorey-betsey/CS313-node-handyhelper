@@ -65,11 +65,7 @@ function insertToSecurity(userName, password, firstName, lastName, callback) {
                 console.log("model new user:" + results)
                 callback(null, results); 
             };
-        //callback(null, db_results);
-        //callback (null, results); // returns results to userController.createNewUser()  
         });
-    //});
-    //var results = {user:[{userName: "Cat Cravens", password: "catWORD"}]};
 };
 
 function insertToChefs(userName, firstName, lastName, callback) {
@@ -92,12 +88,8 @@ function insertToChefs(userName, firstName, lastName, callback) {
                 var db_results = {userName:userName, firstName:firstName, lastName:lastName, success: true};
                 console.log("model new user:" + db_results)
                 callback(null, db_results); 
-            };
-        //callback(null, db_results);
-        //callback (null, results); // returns results to userController.createNewUser()  
+            }; 
         });
-    //});
-    //var results = {user:[{userName: "Cat Cravens", password: "catWORD"}]};
 };
 
 function getAllChefsFromDb(callback) {
@@ -109,7 +101,7 @@ function getAllChefsFromDb(callback) {
         console.log("Error with select chefs database occurred. ")
         console.log(err);
         callback(err, null);
-      } 	// Log this to the console for debugging purposes.
+      } 	 
 		console.log("Found result: " + JSON.stringify(result.rows));
 		callback(null, result);
 	});
@@ -123,7 +115,7 @@ function getRecipesFromDB(callback) {
         console.log("Error with select recipes database occurred. ")
         console.log(err);
         callback(err, null);
-      } 	// Log this to the console for debugging purposes.
+      } 	 
 		console.log("Found result: " + JSON.stringify(result.rows));
 		callback(null, result);
 	});
@@ -137,7 +129,7 @@ function getHeaderFromDB(callback) {
         console.log("Error with select recipes database occurred. ")
         console.log(err);
         callback(err, null);
-      } 	// Log this to the console for debugging purposes.
+      } 	 
 		console.log("Found result: " + JSON.stringify(result.rows));
 		callback(null, result);
 	});
@@ -151,7 +143,7 @@ function getIngredientsFromDB(callback) {
         console.log("Error on select ingredients occurred. ")
         console.log(err);
         callback(err, null);
-      } 	// Log this to the console for debugging purposes.
+      } 	 
         console.log("Found result: " + JSON.stringify(result.rows));
         callback(null, result);
 
@@ -159,7 +151,7 @@ function getIngredientsFromDB(callback) {
 }
 
 function insertNewRecipe(chefID, title, servings, instructions, recipeNotes, callback) {
-    //Create a new user and password
+     
     var enteredChefID       = chefID;
     var enteredTitle        = title;
     var enteredServings     = servings;
@@ -196,35 +188,4 @@ module.exports = {
     insertNewRecipe: insertNewRecipe
 };
 
-
-
-// function insertNewRecipe(title, servings, instructions, recipeNotes, callback) {
-//     //Create a new user and password
-//     var enteredTitle        = title;
-//     var enteredServings     = servings;
-//     var enteredInstructions = instructions;
-//     var enteredRecipeNotes  = recipeNotes;
-
-//     insertRecipeToDB(function(error, result) {
-//         var results = {title:title, servings:servings, instructions:instructions, recipeNotes:recipeNotes, success: true};
-//         console.log("model new recipe:" + results)
-//         callback(null, results);
-//         }); 
-// };
-
-// function insertRecipeToDB(callback, results) {
-//     var sql = "INSERT INTO recipes(title, servings, instructions, recipeNotes) VALUES ($1::text, $2::text, $3::text, $4::text)";
-//     var params = [enteredTitle, enteredServings, enteredInstructions, enteredRecipeNotes]; 
-
-//     pool.query(sql, params, function(err, db_results) {
-//         if (err) {
-//             console.log("An error occurred with the DB on entering new recipe");
-//             console.log(err);
-//             callback(err, null);
-//         }else {
-//             console.log("New REcipe: " + title + " inserted into DB");
-//             console.log(db_results);
-//         };
-//     }); 
-// });
 
