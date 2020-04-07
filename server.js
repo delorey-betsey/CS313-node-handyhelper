@@ -1,5 +1,5 @@
 require('dotenv').config()
-//const cool = require('cool-ascii-faces');
+const cool = require('cool-ascii-faces');
 const express = require('express')
 const app = express();
 const path = require('path')
@@ -38,7 +38,7 @@ const pool = new Pool({connectionString: connectionString,ssl:true});
   app.get('/displayAllRecipes', userController.displayAllRecipes); 
   app.get('/displayIngredients', userController.displayIngredients);
 
-  //app.get("/cool", (req, res) => res.send(cool()));
+  app.get("/cool", (req, res) => res.send(cool()));
   
   //app.get('/processAddRecipe', processAddRecipe);  
 
