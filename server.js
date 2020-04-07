@@ -16,7 +16,8 @@ const pool = new Pool({connectionString: connectionString,ssl:true});
 
 // express()
   //app.use(express.static(path.join(__dirname, 'public')))
-  app.use(express.static("public"));
+  app.use(express.static("public"));  
+  app.use(bodyParser.urlencoded({ extended: true }));
   app.use(express.json())
   app.use(express.urlencoded({extended: true}))
   app.set('views', path.join(__dirname, 'public/views'))
