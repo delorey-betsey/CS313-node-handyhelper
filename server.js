@@ -15,7 +15,8 @@ const connectionString = process.env.DATABASE_URL || "postgres://xeuolzgrfowtaq:
 const pool = new Pool({connectionString: connectionString,ssl:true});
 
 // express()
-  app.use(express.static(path.join(__dirname, 'public')))
+  //app.use(express.static(path.join(__dirname, 'public')))
+  app.use(express.static("public"));
   app.use(express.json())
   app.use(express.urlencoded({extended: true}))
   app.set('views', path.join(__dirname, 'public/views'))
@@ -25,7 +26,7 @@ const pool = new Pool({connectionString: connectionString,ssl:true});
 // -----------------TWO HOMEPAGES (landing and wilson------
   app.get('/', (req, res) => res.render('landing'));
   //app.get('/landing', (req, res) => res.render('landing'));
-  app.get('/wilson', (req, res) => res.render('wilson'));
+  app.get('/design', (req, res) => res.render('design'));
   app.get("/cool", (req, res) => res.send(cool()));
 
 //endpoints
