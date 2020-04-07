@@ -2,24 +2,78 @@
 <html>
 <head>
 	<title>Landing</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script
 		src="https://code.jquery.com/jquery-3.2.1.min.js"
 		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 		crossorigin="anonymous">
 	</script>
+	<link type="text/css" rel="stylesheet" href="/stylesheets/main.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="views/client.js"></script>
 </head>
 <body>
 	<br>
-	<form action="/">
-		<button id="home">Home</button> 
-		<div id="clientResults"></div> 
-		<div id="success"></div>
-	</form> 
-	<br>		
+	<div  class="home">
+		<form action="/">
+			<button id="home">Home</button> 
+
+		</form> 
+	</div>	
+
+	<div class="row">
+
+		<div class="column1" >
+		  <!-- <h2>left</h2> -->
+		  <div id="clientResults"></div> 
+		  <div id="success"></div>
+			<br><br>
+			<form action="#" method="POST" id="logIn">
+				<input type="button" name="submit_form" id="btn_submit" value="Log In" onclick="submitUser()">	
+				(fill 1-2 only)
+				<br><br>
+				1. <input type="text" id="userName" name="userName" placeholder="username">	
+				<br>
+				2. <input type="text" id="password" name="password" placeholder="password">
+				<br><br>
+				3. <input type="text" id="firstName" name="firstName" placeholder="First Name">
+				<br>
+				4. <input type="text" id="lastName" name="lastName" placeholder="Last Name">
+				<br><br>
+				<input type="button" name="newPerson_form" id="newPerson_submit" value="Sign Me Up!" onclick="newUser()">
+				(fill 1-4)
+				<br>			  
+			</form> 
+			<br>
+		</div>
+	  
+	  <div class="column2" >
+		  <!-- <h2>right</h2> -->
+		  <div>
+			<br><br>
+			<button id="Design">Design *</button>  * Type /design after URL. <br>
+			Site graphic design coming soon!
+			<br><br>
+			<button id="getTimestamp">Get Timestamp</button> 
+			<div id="status"></div>
+			<br>
+			<form action="https://weather.com/weather/tenday/l/789e30ea403dfe3285815bef19260340931c248557a988e96d1eeff46238728a/">
+				<button id="stayCool" type="submit">Stay Cool--local weather</button>
+			</form>
+			<br><br>
+			Just for Fun:
+			<br>
+			<button id="beCool">Be Cool *</button> * Type /cool after URL.<br>
+			Click in address bar and hit enter many times (-:
+			
+
+		</div>
+		
+		<br>
+		</div>
+	  </div>
 <!-- ----------------LOGIN VV --------------------------- -->		
-<form action="#" method="POST" id="logIn">
+<!-- <form action="#" method="POST" id="logIn">
 
 	<input type="button" name="submit_form" id="btn_submit" value="Log In" onclick="submitUser()">	
 	(fill 1-2 only)
@@ -37,10 +91,10 @@
 	<br>
 	  
 </form> 
-<br>
+<br> -->
 <!-- ----------------LOGIN ^^ --------------------------- -->
 
-	<div>
+	<!-- <div>
 		<button id="getTimestamp">Get Timestamp</button> 
 		 
 		<form action="https://weather.com/weather/tenday/l/789e30ea403dfe3285815bef19260340931c248557a988e96d1eeff46238728a/">
@@ -52,8 +106,8 @@
 		<p id="timestampResults"></p>
 	</div>
 	<div id="status"></div>
-	<br>
-	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	<br> -->
+
 	<br><br> 
 	<form method ="get" action="/displayAllChefs">
 		<button id="displayAllChefs">Display all chefs.</button>

@@ -24,8 +24,6 @@
 		<form action="https://weather.com/weather/tenday/l/789e30ea403dfe3285815bef19260340931c248557a988e96d1eeff46238728a/">
 			<button id="stayCool" type="submit">Stay Cool</button>
 			</form>
-
-		<button id="beCool">Be Cool</button>
 		<p id="timestampResults"></p>
 	</div>
 	<div id="status"></div>
@@ -52,7 +50,7 @@
 			<%
 			ingredientsRows.forEach( rr => {
 				%>
-				<li><%=rr.recipeID%>  <%=rr.amount%>  <%=rr.measure%>  <%=rr.item%>  <%=rr.itemNotes%>
+				<li><%=rr.recipeID%>  <%=rr.amount%>  <%=rr.measure%>  <%=rr.item%> <br> <%=rr.itemnotes%>
 				</li>
 				<%
 				})
